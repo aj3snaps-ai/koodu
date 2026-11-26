@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Koodu – Rooms, PGs and Hostels in Ernakulam</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--m:14px;--gx:20px;--bg:#fff;--surface:#fff;--ink:#111;--muted:#666;--line:#ddd;--tint:#eee;--brand:#111;--brand-ink:#fff;--accent:#111;--accent-ink:#fff;--uline:#f0b429;--ok:#333;
+  --glass:rgba(0,0,0,.05);--glass-line:rgba(0,0,0,.22);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a0a0a;--surface:#161616;--ink:#eee;--muted:#9a9a9a;--line:#2a2a2a;--tint:#242424;--brand:#fff;--brand-ink:#000;--accent:#fff;--accent-ink:#000;--ok:#ddd;--glass:rgba(255,255,255,.08);--glass-line:rgba(255,255,255,.28);color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0a0a0a;--surface:#161616;--ink:#eee;--muted:#9a9a9a;--line:#2a2a2a;--tint:#242424;--brand:#fff;--brand-ink:#000;--accent:#fff;--accent-ink:#000;--ok:#ddd;--glass:rgba(255,255,255,.08);--glass-line:rgba(255,255,255,.28);color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5;padding:calc(var(--m) + env(safe-area-inset-top,0px)) var(--m) calc(var(--m) + env(safe-area-inset-bottom,0px))}
+h1,h2,h3{font-family:"Bricolage Grotesque","Hanken Grotesk",system-ui,sans-serif;margin:0}
+.ic{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+/* glass */
+.glass{background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);color:var(--ink)}
+.on-dark .glass,.glass.w{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.45);color:#fff}
+.gbtn{min-height:44px;padding:0 18px;border-radius:22px;font:inherit;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.gbtn[aria-pressed="true"]{outline:2px solid currentColor;outline-offset:-2px}
+.round{width:44px;height:44px;border-radius:22px;padding:0;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}
+/* hero */
+.hero{position:relative;height:580px;overflow:hidden;color:#fff;background:#111;border-radius:22px}
+.slides{display:flex;height:100%;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.slide{flex:0 0 100%;display:flex;flex-direction:column;justify-content:flex-end;padding:96px var(--gx) 44px}
+.slide h2{font-size:clamp(2rem,7vw,4.2rem);font-weight:800;line-height:1.02;letter-spacing:-.03em;max-width:12ch;text-wrap:balance}
+.slide h2::after{content:"";display:block;width:56px;height:4px;border-radius:2px;background:var(--uline);margin-top:20px}
+.slide p{font-size:clamp(1rem,2.6vw,1.25rem);font-weight:500;line-height:1.55;max-width:34ch;margin:18px 0 0;color:rgba(255,255,255,.9);text-wrap:pretty}
+.slide{position:relative;overflow:hidden}
+.slide h2,.slide p{position:relative;z-index:1}
+.photo-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.photo-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.58) 0%,rgba(0,0,0,.24) 45%,rgba(0,0,0,.08) 100%)}
+.hasphoto .art{display:none}
+.hbtn{position:absolute;right:14px;bottom:14px;z-index:6;min-height:44px;padding:0 16px;border-radius:22px;font:inherit;font-weight:700;cursor:pointer}
+.hrow{display:grid;gap:6px;border:1px solid var(--line);border-radius:14px;padding:12px}
+.hrow b{font-size:.95rem}.hrow input{height:auto;padding:8px}
+.art{position:absolute;right:0;bottom:0;height:80%;width:auto;max-width:64%;pointer-events:none}
+@media (max-width:1023px){.hero{height:460px}.hero .nav .tog{display:none}.hero .nav{justify-content:center}.slide{padding-top:96px;padding-bottom:36px}.bnav{max-width:640px;margin:0 auto}}
+@media (max-width:700px){.hero{height:400px}.slide{padding-top:84px;padding-bottom:28px}.slide h2{font-size:1.8rem}.art{max-width:100%;height:26%;top:62px;bottom:auto}}
+
+.nav{position:absolute;top:0;left:0;right:0;z-index:5;display:flex;justify-content:space-between;align-items:center;padding:18px var(--gx) 0}
+.logo{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:800;font-size:1.7rem;letter-spacing:-.02em;color:#fff}
+.tog{display:flex;gap:6px;padding:4px;border-radius:22px}
+.tog button{width:44px;height:44px;border-radius:22px;border:0;background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.tog button:hover{background:rgba(255,255,255,.2)}
+@media (max-width:479px){.tog button.tmap{display:none}}
+.dots{position:absolute;left:var(--gx);bottom:32px;display:flex;gap:8px;z-index:4}
+.dot{width:12px;height:12px;border-radius:6px;border:0;background:rgba(255,255,255,.5);padding:0;cursor:pointer;transition:width .3s}
+.dot[aria-current="true"]{width:30px;background:#fff}
+.hsearch{position:absolute;left:var(--gx);right:var(--gx);bottom:20px;z-index:4;display:grid;gap:10px;max-width:640px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.sbox{display:flex;gap:8px;background:var(--surface);border-radius:16px;padding:6px 6px 6px 14px;align-items:center}
+.sbox input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;color:var(--ink);height:44px}
+.sbox button{min-height:44px;border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:700;padding:0 18px;cursor:pointer}
+/* sections */
+section.sec{padding:32px 0 6px}
+.sh{display:flex;justify-content:space-between;align-items:end;padding:0 4px;margin-bottom:14px}
+.sh h2{font-size:1.6rem;font-weight:800}.sh span{color:var(--muted);font-size:.92rem}
+.slider{position:relative}
+.track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 0 12px;scrollbar-width:none;scroll-behavior:smooth}
+.track::-webkit-scrollbar{display:none}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:44px;height:44px;border-radius:22px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.arrow.l{left:10px}.arrow.r{right:10px}
+@media (hover:none){.arrow{display:none}}
+.area{flex:0 0 220px;height:170px;border-radius:20px;position:relative;scroll-snap-align:start;border:0;color:#fff;font:inherit;text-align:left;cursor:pointer;padding:0;overflow:hidden}
+.chipn{position:absolute;top:12px;left:12px;display:flex;align-items:center;gap:6px;background:var(--surface);color:var(--ink);padding:6px 12px;border-radius:14px 14px 14px 4px;font-weight:700;font-size:.88rem}
+.chipn .ic{width:16px;height:16px;color:var(--ok)}
+.area .go{position:absolute;left:14px;bottom:12px;font-weight:700}
+/* listings */
+.fbar{display:flex;gap:8px;overflow-x:auto;padding:0 0 14px;scrollbar-width:none}
+.fbar::-webkit-scrollbar{display:none}
+.fbar .gbtn{flex:none}
+.fbar select{flex:none;min-height:44px;border-radius:22px;padding:0 14px;font:inherit}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;padding:0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:inherit;display:block;width:100%;padding:0}
+.photo{height:140px;background:var(--tint);position:relative;display:flex;align-items:center;justify-content:center;color:var(--brand)}
+.photo .ic{width:44px;height:44px}
+.photo .chipn{top:10px;left:10px}
+.heart{position:absolute;right:10px;top:10px;width:44px;height:44px;border-radius:22px;border:0;background:var(--surface);color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.heart[aria-pressed="true"]{color:#111}.heart[aria-pressed="true"] .ic{fill:currentColor}
+.body{padding:12px 14px 14px;display:grid;gap:4px}
+.r{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.muted{color:var(--muted);font-size:.9rem}.ver{color:var(--ok);font-weight:700;font-size:.85rem}
+.name{font-family:"Bricolage Grotesque",system-ui,sans-serif;font-weight:600;font-size:1.1rem}
+.price{font-weight:800;font-size:1.15rem}.price small{font-weight:500;color:var(--muted);font-size:.78rem}
+.empty{grid-column:1/-1;padding:30px 0;color:var(--muted);text-align:center}
+footer{padding:28px 4px 8px;color:var(--muted);font-size:.9rem}
+/* bottom nav */
+.bnav{display:none;position:fixed;left:var(--m);right:var(--m);bottom:calc(var(--m) + env(safe-area-inset-bottom,0px));z-index:40;padding:6px 8px;background:var(--surface);border:1px solid var(--line);border-radius:24px}
+.bnav button{flex:1;min-height:56px;border:0;background:transparent;color:var(--muted);font:inherit;font-size:.74rem;font-weight:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer}
+.bnav button[aria-current="page"]{color:var(--brand)}
+@media (max-width:1023px){.bnav{display:flex}footer{padding-bottom:100px}}
+/* popups */
+.ov{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:18px}
+.ov.on{display:flex}
+.pop{background:var(--surface);color:var(--ink);width:min(100%,480px);max-height:80vh;overflow:auto;border-radius:22px;padding:18px;display:grid;gap:12px;align-content:start}
+@media (max-width:1023px){.ov{align-items:flex-end;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}.pop{max-height:calc(100vh - 150px)}}
+.ph{display:flex;justify-content:space-between;align-items:center}.ph h3{font-size:1.3rem;font-weight:800}
+.pop .gbtn.g{color:var(--ink)}
+.cats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pop input,.pop select{height:48px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:var(--bg);color:var(--ink);font:inherit;width:100%}
+.form{display:grid;gap:12px}.form label{display:grid;gap:6px;font-weight:700;font-size:.88rem}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{display:block;width:100%;min-height:50px;border-radius:14px;border:0;background:var(--brand);color:var(--brand-ink);font:inherit;font-weight:700;text-align:center;text-decoration:none;padding:13px;cursor:pointer}
+.btn.amber{background:var(--accent);color:var(--accent-ink)}
+.pills{display:flex;flex-wrap:wrap;gap:8px}.pill{padding:6px 12px;border:1px solid var(--line);background:var(--bg);border-radius:10px;font-size:.88rem}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px 12px}.stat b{display:block;font-size:1.2rem}
+.pop .list{display:grid;gap:8px}
+.nearmsg{margin:0 4px 12px}
+.nctl{display:flex;align-items:center;gap:8px}
+.seeall{font-weight:700;font-size:.92rem;color:var(--ink);text-decoration:none;padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);white-space:nowrap}
+.seeall:hover{background:var(--tint)}
+.nearmsg:empty{display:none}
+.btn[disabled]{opacity:.6;cursor:wait}
+.nearmsg.warn{color:var(--ink);font-weight:500}
+/* Near you cards: same design as the "Top Resorts & Villas" cards */
+#nearTrack{gap:14px;padding:4px 2px 12px}
+#nearTrack .ncard{flex:0 0 calc((100% - 56px)/5);min-width:200px;scroll-snap-align:start}
+.ncard{position:relative;aspect-ratio:3/4;min-height:300px;border-radius:34px 12px 34px 12px;overflow:hidden;cursor:pointer;color:#fff;background-color:#1a1a1a;background-size:cover;background-position:center;isolation:isolate;text-align:left;font:inherit;transition:transform .2s ease;contain:layout paint}
+@media (hover:hover){.ncard:not(.sk):hover{transform:translateY(-3px)}}
+.ncard.t-Room{background-image:url('img/hero/rooms.webp'),linear-gradient(135deg,#444,#1a1a1a)}
+.ncard.t-PG{background-image:url('img/hero/pg.webp'),linear-gradient(135deg,#555,#1a1a1a)}
+.ncard.t-Hostel{background-image:url('img/hero/hostel.webp'),linear-gradient(135deg,#666,#1a1a1a)}
+.ncard.hasimg{background-image:none}
+.ncard .nimg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:-2}
+.ncard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.32))}
+.nchip{position:absolute;top:12px;left:12px;max-width:calc(100% - 24px);display:flex;align-items:center;padding:7px 12px;border-radius:16px 5px 16px 5px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.45);color:#fff;font-size:12px;font-weight:600;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 4px 12px rgba(0,0,0,.25)}
+.npanel{position:absolute;left:8px;right:8px;bottom:8px;display:flex;align-items:stretch;gap:10px;padding:12px 14px 12px 16px;height:146px;min-height:0;border-radius:26px 8px 26px 8px;background:rgba(0,0,0,.58);border:1px solid rgba(255,255,255,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.25)}
+.ntx{flex:1;min-width:0;display:flex;flex-direction:column}
+.ntx b{display:block;margin:0;font-size:17px;line-height:1.25;font-weight:800;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.55);white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere}
+.vbadge{display:inline-block;vertical-align:-3px;width:18px;height:18px;margin-left:5px;flex:none}
+.ntx .nprice{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 12px;font-weight:700;font-size:14px;margin-top:10px}
+.ntx .nprice span{display:inline;margin:0}
+.ntx .nmd{display:flex;justify-content:flex-end;align-items:center;gap:3px;margin-top:auto;padding-top:8px;font-weight:800;font-size:12.5px;text-decoration:none}
+.ntx .nmd .ic{width:14px;height:14px}
+.ntx .nloc{margin-top:6px}
+.ntx span{display:block;margin:3px 0 0;font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.95);text-shadow:0 1px 8px rgba(0,0,0,.55);white-space:normal;overflow:visible;text-overflow:clip}
+.ntx .nmore{margin-top:4px;opacity:.9}
+.ngo{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.45);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 4px 12px rgba(0,0,0,.25);transition:background .15s ease}
+.ngo .ic{width:17px;height:17px}
+.ncard:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media (max-width:1099px){#nearTrack .ncard{flex:0 0 min(210px,56vw)}}
+@media (max-width:700px){#nearTrack{gap:12px}#nearTrack .ncard{flex:0 0 min(168px,46vw);min-width:0;aspect-ratio:4/5;min-height:0;border-radius:26px 9px 26px 9px}.nchip{top:10px;left:10px;padding:6px 10px;font-size:11px;border-radius:13px 4px 13px 4px;max-width:calc(100% - 20px)}.npanel{left:6px;right:6px;bottom:6px;gap:6px;padding:16px 8px 16px 11px;min-height:84px;border-radius:20px 6px 20px 6px}.npanel{padding:10px 10px 10px 11px;height:120px;min-height:0}.ntx .nprice{gap:1px 12px;margin-top:8px}.ntx .nloc{margin-top:5px}.ntx .nmd{margin-top:auto;padding-top:6px;font-size:11px}.ntx .nmd .ic{width:12px;height:12px}.ntx b{font-size:13.5px}.ntx span{font-size:10.5px}.ntx .nprice{font-size:11.5px}.ntx .nam{display:none}.vbadge{width:15px;height:15px;margin-left:4px;vertical-align:-2px}}
+/* Near you card details: every row stays on one line on all screen sizes, overflow shows dots (...) */
+.ntx b{display:flex;align-items:center;white-space:nowrap;overflow:hidden;overflow-wrap:normal;text-overflow:clip}
+.ntx b .ntt{display:block;min-width:0;margin:0;font-size:inherit;line-height:inherit;color:inherit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ntx b{font-family:"Bricolage Grotesque","Hanken Grotesk",system-ui,sans-serif;font-weight:800;line-height:1.3}
+/* heading: larger + bold; JS sets --nhs so all headings share one size and fit on ONE line. Other texts share one smaller size. */
+#nearTrack .ntx b{font-size:var(--nhs,23px);font-weight:800;line-height:1.3;letter-spacing:-.02em}
+#nearTrack .npanel{left:5px;right:5px;bottom:5px;padding:12px 10px 12px 12px}
+#nearTrack .ntx span:not(.ntt),#nearTrack .ntx .nmd,#nearTrack .ntx .nprice{font-size:13px;line-height:1.35}
+@media (max-width:700px){#nearTrack .npanel{left:4px;right:4px;bottom:4px;padding:10px 7px 10px 9px}#nearTrack .ntx b{font-size:var(--nhs,19px)}#nearTrack .ntx span:not(.ntt),#nearTrack .ntx .nmd,#nearTrack .ntx .nprice{font-size:11.5px}}
+/* Near you card details panel: compact height, more gap under the heading, km and "More details" on one line */
+#nearTrack .npanel{height:110px;height:clamp(84px,55cqw,110px);padding-top:16px;padding-bottom:4px}
+#nearTrack .ntx .nprice{margin-top:16px}
+#nearTrack .ntx .nrow{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:9px;padding-top:0}
+#nearTrack .ntx .nrow span{margin:0;padding:0;white-space:nowrap}
+#nearTrack .ntx .nrow .nmd{margin-left:auto;justify-content:flex-end;font-family:"Bricolage Grotesque","Hanken Grotesk",system-ui,sans-serif;font-weight:800;letter-spacing:.01em}
+@media (max-width:700px){#nearTrack .npanel{padding-top:12px;padding-bottom:3px}#nearTrack .ntx .nprice{margin-top:12px}#nearTrack .ntx .nrow{margin-top:6px;padding-top:0;gap:6px}}
+/* Near you card texts shrink automatically with the card width (small screens), every size has a min and a max */
+.ncard{container-type:inline-size}
+#nearTrack .ntx b{font-size:var(--nhs,clamp(14px,11.5cqw,23px))}
+#nearTrack .ntx span:not(.ntt),#nearTrack .ntx .nmd,#nearTrack .ntx .nprice{font-size:clamp(10px,6.8cqw,13px)}
+#nearTrack .ntx .nmd .ic{width:1.1em;height:1.1em}
+#nearTrack .ntx .vbadge{width:.85em;height:.85em}
+#nearTrack .nchip{font-size:clamp(10px,6.2cqw,12px)}
+@media (max-width:700px){#nearTrack .ntx b{font-size:var(--nhs,clamp(14px,11.5cqw,23px))}#nearTrack .ntx span:not(.ntt),#nearTrack .ntx .nmd,#nearTrack .ntx .nprice{font-size:clamp(10px,6.8cqw,13px)}#nearTrack .nchip{font-size:clamp(10px,6.2cqw,12px)}}
+.ncard.sk{cursor:default;pointer-events:none;background:var(--tint);background-image:none;color:inherit;min-height:300px}
+.ncard.sk::before{display:none}
+.ncard.sk i{display:block;position:relative;overflow:hidden;background:var(--surface);border-radius:8px}
+.ncard.sk .nchip{position:absolute;width:96px;height:30px;padding:0;border:0;border-radius:16px 5px 16px 5px;box-shadow:none}
+.ncard.sk .npanel{background:var(--surface);border-color:var(--line);backdrop-filter:none;-webkit-backdrop-filter:none}
+.ncard.sk .ntx{gap:8px}
+.ncard.sk .ngo{background:var(--tint);border:0;box-shadow:none}
+.ncard.sk::after{content:"";position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--surface) 60%,transparent),transparent);animation:skshim 1.5s ease-in-out infinite}
+@keyframes skshim{to{transform:translateX(100%)}}
+@media (prefers-reduced-motion:reduce){.ncard.sk::after{animation:none}}
+.track .empty{padding:20px 4px;text-align:left;flex:1}
+.toast{position:fixed;left:50%;bottom:110px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-weight:700;z-index:80;opacity:0;pointer-events:none;transition:opacity .2s}.toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.slides,.dot,.toast{transition:none}.track{scroll-behavior:auto}html{scroll-behavior:auto}}
+/* Near you details popup: modern glass design. Outlines, hairlines and translucent glass only, no solid fills. Used only by the Near you cards. */
+#p-near{z-index:60;background:rgba(0,0,0,.32);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.pop.nd{width:min(100%,560px);padding:24px 22px 26px;gap:20px;border-radius:30px;background:var(--surface);background:color-mix(in srgb,var(--surface) 72%,transparent);-webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5);border:1px solid var(--glass-line);box-shadow:0 24px 60px rgba(0,0,0,.22);max-height:80vh;max-height:80dvh;scrollbar-width:none}
+.pop.nd::-webkit-scrollbar{display:none}
+.pop.nd>*{min-width:0}
+.pop.nd .ph{gap:14px;align-items:flex-start}
+.pop.nd .ph h3{font-size:1.4rem;line-height:1.2;letter-spacing:-.015em;min-width:0;overflow-wrap:anywhere}
+.pop.nd .ph .vbadge{width:.8em;height:.8em;margin-left:6px;vertical-align:-1px}
+.pop.nd .ph .round{flex:none}
+.pop.nd .r{display:block;color:var(--muted);font-size:.92rem;line-height:1.5;margin-top:-8px}
+.pop.nd .r .muted{font-size:inherit}
+/* photos */
+.ndg{position:relative;border:0;border-radius:24px;overflow:hidden;background:var(--glass);aspect-ratio:4/3;touch-action:pan-y}
+.ndg img{width:100%;height:100%;object-fit:cover;display:block;-webkit-user-drag:none;user-select:none}
+.ndg:focus,.ndg:focus-visible,.ndth:focus,.ndth:focus-visible{outline:0}
+.ndctl{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:8px}
+.ndg .round{position:absolute;top:50%;margin-top:-20px;width:40px;height:40px;border-radius:20px;z-index:2}
+.ndg .ndp{left:12px}.ndg .ndn{right:12px}
+.ndc{font-size:.85rem;font-weight:700;letter-spacing:.06em;color:var(--muted)}
+.ndt{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;padding:0;border:0}
+.ndt::-webkit-scrollbar{display:none}
+.ndth{width:100%;aspect-ratio:1/1;padding:0;border:0;outline:0;border-radius:14px;overflow:hidden;background:transparent;cursor:pointer;opacity:.5;transition:opacity .2s}
+.ndth[aria-current="true"],.ndth:hover{opacity:1}
+.ndth img{width:100%;height:100%;object-fit:cover;display:block}
+/* price card: one outlined box, no fill */
+.pop.nd .stats{grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:transparent}
+.pop.nd .stat{background:transparent;border:0;border-radius:0;padding:16px 20px;display:grid;gap:4px}
+.pop.nd .stat+.stat{border-left:1px solid var(--line)}
+.pop.nd .stats.s3{grid-template-columns:repeat(3,1fr)}
+.pop.nd .stats.s3 .stat{padding:14px 14px}
+.pop.nd .stats.s3 .stat b{font-size:1.2rem}
+@media (max-width:400px){.pop.nd .stats.s3 .stat{padding:12px 10px}.pop.nd .stats.s3 .stat b{font-size:1.02rem}.pop.nd .stats.s3 .stat span{font-size:.72rem}}
+.pop.nd .stat span{font-size:.8rem}
+.pop.nd .stat b{font-family:"Bricolage Grotesque","Hanken Grotesk",system-ui,sans-serif;font-size:1.4rem;letter-spacing:-.02em}
+/* sections */
+.nds{font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:6px 0 -6px}
+.ndrow{display:flex;justify-content:space-between;gap:16px;padding:13px 2px;border-bottom:1px solid var(--line);font-size:.93rem;line-height:1.4}
+.ndrow:first-child{padding-top:4px}.ndrow:last-child{border-bottom:0;padding-bottom:2px}
+.ndrow span{color:var(--muted);flex:none}.ndrow b{font-weight:600;text-align:right;min-width:0;overflow-wrap:anywhere}
+.pop.nd .pills{gap:10px}
+.pop.nd .pill{background:transparent;border:1px solid var(--glass-line);border-radius:999px;padding:8px 16px;font-size:.88rem}
+/* actions: outlined glass buttons */
+.ndact{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.ndb{display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 18px;border-radius:26px;border:1px solid var(--glass-line);background:transparent;color:var(--ink);font:inherit;font-weight:700;text-align:center;text-decoration:none;cursor:pointer;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:background .18s,border-color .18s}
+.ndb:hover{background:var(--glass)}
+.ndb.p{grid-column:1/-1;border:1.5px solid var(--brand);color:var(--brand)}
+.ndb[disabled]{opacity:.55;cursor:default}.ndb[disabled]:hover{background:transparent}
+@media (max-width:520px){.pop.nd{padding:20px 16px 22px;gap:18px;border-radius:26px}.ndrow{gap:12px}.pop.nd .stat{padding:14px 16px}}
+/* popup always stays clear of the bottom navigation bar and the top edge */
+@media (max-width:1023px){#p-near{padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}.pop.nd{max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px)}}
+/* nothing is cut off: the popup grows to fit all its content and the whole overlay scrolls on every screen size */
+#p-near{align-items:flex-start;justify-content:center;overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.pop.nd{max-height:none;overflow:visible;margin:auto;flex:none}
+.ndg{max-height:min(52vh,400px)}
+#p-near{scrollbar-width:none;-ms-overflow-style:none}
+#p-near::-webkit-scrollbar{width:0;height:0;display:none}
+@media (max-width:400px){.ndt{gap:8px}.ndth{border-radius:11px}}
+@media (max-width:1023px){#p-near{padding-top:calc(14px + env(safe-area-inset-top,0px));padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}.pop.nd{max-height:none;margin:auto auto 0}}
+/* outside gaps: even margin around the popup; on small screens it sits just above the bottom navigation bar */
+#p-near{padding:28px 18px}
+.ndg{width:100%;aspect-ratio:3/2;max-height:none}
+.ndg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+@media (max-width:1023px){#p-near{padding:calc(18px + env(safe-area-inset-top,0px)) 18px calc(100px + env(safe-area-inset-bottom,0px))}.pop.nd{margin:auto auto 0}}
+/* bottom navigation bar stays visible above every popup; the Near you popup is centred in the space above it with an even gap all round */
+.bnav{z-index:70}
+@media (max-width:1023px){#p-near{padding:calc(18px + env(safe-area-inset-top,0px)) 18px calc(100px + env(safe-area-inset-bottom,0px))}.pop.nd{margin:auto}}
+/* fixed gap under the popup: on small screens its bottom edge always stays 16px above the bottom navigation bar */
+@media (max-width:1023px){#p-near{padding:calc(18px + env(safe-area-inset-top,0px)) 18px calc(84px + env(safe-area-inset-bottom,0px))}.pop.nd{margin:auto auto 16px}}
+/* equal gaps always visible: the popup never grows taller than the free space, its content scrolls inside it (no scroll bar shown) */
+#p-near{overflow:hidden;padding:28px 18px}
+.pop.nd{max-height:100%;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;margin:auto;flex:none}
+.ndg{max-height:min(46vh,380px)}
+@media (max-width:1023px){#p-near{padding:calc(18px + env(safe-area-inset-top,0px)) 18px calc(100px + env(safe-area-inset-bottom,0px))}.pop.nd{max-height:100%;margin:auto auto 0}}
+/* all content always shown: the popup grows to fit everything and the screen scrolls (no scroll bar shown). A fixed spacer keeps the bottom gap at the end. */
+#p-near{display:none;flex-direction:column;align-items:center;justify-content:flex-start;overflow-x:hidden;overflow-y:auto;padding:28px 18px 0;scrollbar-width:none;-ms-overflow-style:none}
+#p-near.on{display:flex}
+#p-near::-webkit-scrollbar{width:0;height:0;display:none}
+#p-near::after{content:"";flex:none;height:28px}
+.pop.nd{max-height:none;overflow:visible;margin:auto 0;flex:none}
+.ndg{max-height:min(40vh,360px)}
+.ndth{aspect-ratio:4/3}
+.ndrow{padding-top:11px;padding-bottom:11px}
+@media (max-width:1023px){#p-near{padding:calc(18px + env(safe-area-inset-top,0px)) 18px 0}#p-near::after{height:calc(100px + env(safe-area-inset-bottom,0px))}.pop.nd{max-height:none;margin:auto 0 0}}
+/* final layout: popup height is limited to the free space so the same gap shows top and bottom at all times; inside, every section keeps its full size (nothing squeezed or overlapped) and the content scrolls with no scroll bar shown */
+#p-near{display:none;flex-direction:row;align-items:flex-start;justify-content:center;overflow:hidden;padding:28px 18px}
+#p-near.on{display:flex}
+#p-near::after{display:none}
+.pop.nd{display:flex;flex-direction:column;justify-content:flex-start;max-height:100%;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;margin:auto;flex:none}
+.pop.nd>*{flex:none;min-width:0}
+@media (max-width:1023px){#p-near{padding:calc(18px + env(safe-area-inset-top,0px)) 18px calc(100px + env(safe-area-inset-bottom,0px))}.pop.nd{max-height:100%;margin:auto auto 0}}
+/* soft faded glass edge at the bottom of the popup, shown only while more content is hidden below */
+.pop.nd>.ndfade{position:sticky;bottom:0;height:64px;margin-top:-82px;margin-bottom:0;flex:none;pointer-events:none;opacity:0;transition:opacity .25s ease;background:linear-gradient(to bottom,transparent,color-mix(in srgb,var(--surface) 85%,transparent));-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 70%);mask-image:linear-gradient(to bottom,transparent,#000 70%)}
+.pop.nd>.ndfade.on{opacity:1}
+.pop.nd>.ndfade{bottom:-26px}
+@media (max-width:520px){.pop.nd>.ndfade{bottom:-22px}}
+/* final: the popup is a frame; its content scrolls inside and fades out to transparent (same colour as the popup) across the full popup width: at the bottom while more is below, at the top once scrolled down */
+@property --ndt{syntax:"<length>";inherits:false;initial-value:0px}
+@property --ndb{syntax:"<length>";inherits:false;initial-value:0px}
+.pop.nd{padding:0;gap:0;display:flex;flex-direction:column;overflow:hidden;max-height:100%}
+.pop.nd>.ndscroll{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:20px;padding:24px 22px 26px;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;--ndt:0px;--ndb:0px;transition:--ndt .25s ease,--ndb .25s ease;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 var(--ndt),#000 calc(100% - var(--ndb)),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 var(--ndt),#000 calc(100% - var(--ndb)),transparent 100%)}
+.pop.nd>.ndscroll::-webkit-scrollbar{width:0;height:0;display:none}
+.pop.nd>.ndscroll>*{flex:none;min-width:0}
+.pop.nd>.ndscroll.fb{--ndb:64px}
+.pop.nd>.ndscroll.ft{--ndt:64px}
+@media (max-width:520px){.pop.nd>.ndscroll{padding:20px 16px 22px;gap:18px}}
+/* photo counter sits inside the main photo, bottom right, frosted glass */
+.ndg .ndc{position:absolute;right:12px;bottom:12px;z-index:2;padding:5px 12px;border-radius:14px;font-size:.8rem;font-weight:700;letter-spacing:.06em;color:#fff;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.45);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);text-shadow:0 1px 6px rgba(0,0,0,.45)}
+.ndb.c{border:1.5px solid var(--brand);color:var(--brand)}
+/* smaller close button, soft red glass (no solid fill) */
+.pop.nd .ph .round{width:34px;height:34px;min-height:34px;border-radius:17px;padding:0;color:#111;background:rgba(0,0,0,.06);border:1px solid rgba(0,0,0,.28)}
+.pop.nd .ph .round .ic{width:16px;height:16px}
+@media (hover:hover){.pop.nd .ph .round:hover{background:rgba(0,0,0,.12)}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .pop.nd .ph .round{color:#eee;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.32)}}
+:root[data-theme="dark"] .pop.nd .ph .round{color:#eee;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.32)}
+/* Near you details popup: all texts shrink automatically on small screens. Each size has a min and a max, the max equals the current desktop size, so large screens look exactly the same. */
+.pop.nd .ph h3{font-size:clamp(1.05rem,4.4vw,1.4rem)}
+.pop.nd .r{font-size:clamp(.76rem,2.9vw,.92rem)}
+.pop.nd .stat span{font-size:clamp(.66rem,2.5vw,.8rem)}
+.pop.nd .stat b{font-size:clamp(1.05rem,4.4vw,1.4rem)}
+.pop.nd .stats.s3 .stat span{font-size:clamp(.62rem,2.3vw,.8rem)}
+.pop.nd .stats.s3 .stat b{font-size:clamp(.9rem,3.7vw,1.2rem)}
+.nds{font-size:clamp(.64rem,2.3vw,.76rem)}
+.ndrow{font-size:clamp(.78rem,3vw,.93rem)}
+.pop.nd .pill{font-size:clamp(.74rem,2.9vw,.88rem)}
+.ndb{font-size:clamp(.86rem,3.3vw,1rem);min-height:clamp(46px,12vw,52px)}
+.ndg .ndc{font-size:clamp(.66rem,2.5vw,.8rem)}
+/* Near you popup: heading and close icon always share ONE line on every screen size; a long heading shows dots (...) instead of wrapping */
+.pop.nd .ph{flex-wrap:nowrap;align-items:center;gap:12px}
+.pop.nd .ph h3{flex:1 1 auto;display:flex;align-items:center;min-width:0;white-space:nowrap;overflow:hidden}
+.pop.nd .ph h3 .ndtt{display:block;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pop.nd .ph h3 .vbadge{flex:none}
+.pop.nd .ph .round{flex:none;margin-left:auto}
+/* Home services: same swipe type as the category buttons in the uploaded code.
+   2 lines x 8 buttons. 1000px and wider: all 8 per line fit. Under 1000px the buttons keep their size, the ones that do not fit are cut off at the edge and found by swiping; small side arrows appear for a few seconds as a hint. */
+.svw{display:flex;align-items:center;gap:6px}
+.svgrid{display:grid;grid-template-columns:repeat(8,minmax(88px,1fr));gap:30px 10px;flex:1;min-width:0;padding:12px 6px 6px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;scroll-padding:0 6px;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+.svgrid::-webkit-scrollbar{display:none}
+.svc{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0;padding:0;border:0;background:none;color:var(--ink);font:inherit;text-decoration:none;cursor:pointer;scroll-snap-align:start;-webkit-tap-highlight-color:transparent;-webkit-appearance:none;appearance:none}
+.svb{display:grid;place-items:center;width:64px;height:64px;border-radius:20px;border:1px solid var(--line);background:transparent;transition:transform .25s,border-color .25s,background .25s,color .25s}
+.svb .ic{width:28px;height:28px;stroke-width:1.6;transition:transform .25s}
+.svl{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.25;transition:color .25s}
+.svc:active .svb{transform:scale(.94)}
+.svc:focus-visible{outline:0}
+.svc:focus-visible .svb{border-color:var(--brand);color:var(--brand)}
+@media (hover:hover){.svc:hover .svb{transform:translateY(-5px);border-color:var(--glass-line);background:var(--glass);color:var(--brand)}
+.svc:hover .svb .ic{transform:scale(1.12)}
+.svc:hover .svl{color:var(--brand)}}
+@media (min-width:1100px){.svb{width:76px;height:76px;border-radius:24px}.svb .ic{width:32px;height:32px}.svl{font-size:12px}}
+@media (max-width:1000px){.svl{font-size:10.5px;letter-spacing:.05em}.svb{width:58px;height:58px;border-radius:18px}}
+@media (max-width:700px){.svgrid{padding:12px 6px 6px;gap:20px 6px;grid-template-columns:repeat(8,minmax(78px,1fr))}.svb{width:54px;height:54px;border-radius:17px}.svb .ic{width:24px;height:24px}.svl{font-size:10px}}
+/* side arrows: only shown while more buttons are hidden on that side, and only for the first few seconds */
+.sva{display:none;opacity:0;pointer-events:none;transition:opacity .3s;flex:0 0 26px;height:64px;padding:0;border:0;border-radius:10px;background:var(--bg);color:var(--brand);place-items:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.sva svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.sva:active{background:var(--line)}
+.svw.hl .svp,.svw.hr .svn{display:grid}
+.svw.sa .sva{opacity:1;pointer-events:auto}
+.svw.gone .sva{display:none!important}
+@media (prefers-reduced-motion:reduce){.svc,.svb,.svb .ic,.svl,.sva{transition:none}}
+
+/* Mess & Food popup: outlined glass design, no solid fills */
+#p-mess .pop.ms{width:min(100%,560px);padding:22px 20px 0;gap:14px;border-radius:30px;display:flex;flex-direction:column;overflow:hidden;background:var(--surface);background:color-mix(in srgb,var(--surface) 72%,transparent);-webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5);border:1px solid var(--glass-line);box-shadow:0 24px 60px rgba(0,0,0,.22);max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px)}
+.pop.ms>*{min-width:0;flex:none}
+.pop.ms>.mslist{flex:1 1 auto;min-height:0;overflow-y:auto;touch-action:pan-y}
+.pop.ms .ph{align-items:flex-start;gap:14px}
+.pop.ms .ph h3{font-size:1.4rem;line-height:1.2;letter-spacing:-.015em}
+.pop.ms .ph .round{flex:none}
+.pop.ms .glass{background:transparent;border:1px solid var(--glass-line);transition:background .18s,border-color .18s,color .18s}
+.pop.ms .glass:hover{background:var(--glass)}
+.pop.ms .gbtn[aria-pressed="true"]{outline:0;border:1.5px solid var(--brand);color:var(--brand);font-weight:700}
+.pop.ms .fbar{padding:0 0 2px;margin:0 -20px;padding-left:20px;padding-right:20px}
+.pop.ms .fbar select{background:transparent;color:var(--ink)}
+.pop.ms .fbar select option{background:var(--surface);color:var(--ink)}
+.msh{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:.9rem}
+.mslist{flex:1 1 auto;min-height:0;display:grid;align-content:start;gap:12px;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 -20px;padding:4px 20px 28px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 8px,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 8px,#000 calc(100% - 28px),transparent 100%)}
+.mslist::-webkit-scrollbar{display:none}
+.msc{display:grid;grid-template-columns:52px 1fr auto;gap:4px 14px;align-items:center;width:100%;padding:14px;border-radius:22px;border:1px solid var(--glass-line);background:transparent;color:var(--ink);font:inherit;text-align:left;cursor:pointer;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:background .18s,border-color .18s}
+.msc:hover,.msc:focus-visible{background:var(--glass);border-color:var(--brand);outline:0}
+.msi{grid-row:1/3;width:52px;height:52px;border-radius:16px;border:1px solid var(--glass-line);display:grid;place-items:center;color:var(--brand)}
+.msi .ic{width:24px;height:24px}
+.msn{font-weight:700;font-size:1rem;line-height:1.3;min-width:0;overflow-wrap:anywhere;display:flex;align-items:center;gap:6px}
+.msn .vbadge{width:.9em;height:.9em;flex:none}
+.msp{font-weight:700;color:var(--brand);white-space:nowrap;text-align:right;font-size:1rem}
+.msp small{display:block;font-weight:500;color:var(--muted);font-size:.74rem}
+.msw{grid-column:2/4;color:var(--muted);font-size:.88rem;line-height:1.4}
+.msg{grid-column:1/4;display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.msg span{border:1px solid var(--glass-line);border-radius:999px;padding:4px 12px;font-size:.78rem;color:var(--muted)}
+.msg span.on{border-color:var(--brand);color:var(--brand);font-weight:700}
+.mse{border:1px dashed var(--glass-line);border-radius:22px;padding:28px 18px;text-align:center;color:var(--muted)}
+@media (max-width:520px){#p-mess .pop.ms{padding:20px 16px 0;border-radius:26px}.pop.ms .fbar,.mslist{margin:0 -16px;padding-left:16px;padding-right:16px}.msc{grid-template-columns:46px 1fr auto;padding:12px}.msi{width:46px;height:46px;border-radius:14px}}
+
+.mstog{display:flex;align-items:center;gap:2px;padding:3px;border:1px solid var(--glass-line);border-radius:24px;flex:none;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.mstog button{width:38px;height:38px;border-radius:19px;border:0;background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0;transition:color .18s,box-shadow .18s}
+.mstog button:hover{background:var(--glass)}
+.mstog button[aria-expanded="true"]{color:var(--brand);box-shadow:none}
+.mstog button.act{color:var(--brand)}
+.mstog i{width:1px;height:20px;background:var(--glass-line);margin:0 2px}
+.mstog button{position:relative}
+.mstog button[data-n]::after{content:attr(data-n);position:absolute;top:1px;right:1px;min-width:16px;height:16px;padding:0 4px;box-sizing:border-box;border-radius:8px;background:var(--brand);color:var(--brand-ink);font-size:.64rem;font-weight:700;line-height:16px;text-align:center}
+.mstog button[data-dot]::after{content:"";position:absolute;top:6px;right:6px;width:8px;height:8px;border-radius:50%;background:var(--brand)}
+#p-mess .pop.ms{position:relative}
+.msact{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -20px;padding:0 20px}
+.msact::-webkit-scrollbar{display:none}
+.msact[hidden]{display:none}
+.msact button{flex:none;display:inline-flex;align-items:center;gap:6px;min-height:32px;padding:0 9px 0 13px;border-radius:16px;border:1px solid var(--brand);background:var(--glass);color:var(--brand);font:inherit;font-size:.82rem;font-weight:700;cursor:pointer}
+.msact button .ic{width:14px;height:14px}
+.mssc{position:absolute;left:0;right:0;bottom:0;top:72px;z-index:5;background:rgba(0,0,0,.1);opacity:0;visibility:hidden;transition:opacity .2s,visibility .2s}
+.mssc.on{opacity:1;visibility:visible}
+.mssheet{position:absolute;top:76px;right:14px;z-index:6;width:min(290px,calc(100% - 28px));height:auto;max-height:520px;max-height:min(calc(100vh - 250px),520px);max-height:min(calc(100dvh - 250px),520px);display:flex;flex-direction:column;border-radius:20px;border:1px solid var(--glass-line);background:var(--surface);background:color-mix(in srgb,var(--surface) 90%,transparent);-webkit-backdrop-filter:blur(30px) saturate(1.5);backdrop-filter:blur(30px) saturate(1.5);box-shadow:0 14px 36px rgba(0,0,0,.28);transform-origin:top right;transform:translateY(-8px) scale(.96);opacity:0;visibility:hidden;transition:transform .2s cubic-bezier(.22,.9,.3,1),opacity .2s,visibility .2s}
+.mssheet.on{transform:none;opacity:1;visibility:visible}
+#msSp{width:min(250px,calc(100% - 28px))}
+.msgrab{display:none}
+.mssh{display:flex;align-items:center;gap:6px;padding:12px 12px 8px 16px;flex:none}
+.mssh h4{margin:0;flex:1;font-size:1rem;letter-spacing:-.01em}
+.msreset{border:0;background:transparent;color:var(--brand);font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;padding:4px 8px;border-radius:10px}
+.msreset:disabled{color:var(--muted);opacity:.55;cursor:default}
+.mssx{width:30px;height:30px;border-radius:15px;border:1px solid var(--glass-line);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0;flex:none}
+.mssx .ic{width:16px;height:16px}
+.mssx:hover{background:var(--glass)}
+.mssb{overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none;padding:2px 16px 14px;display:grid;gap:16px;align-content:start;flex:1 1 auto;min-height:0}
+.mssb::-webkit-scrollbar{display:none}
+.mssf{padding:10px 12px 12px;border-top:1px solid var(--glass-line);flex:none}
+.msgrp{display:grid;gap:8px}
+.msgrp>b{font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.msseg{display:grid;grid-template-columns:1fr 1fr;gap:3px;padding:3px;border:1px solid var(--glass-line);border-radius:14px}
+.msseg button{min-height:34px;border:1px solid transparent;border-radius:11px;background:transparent;color:var(--muted);font:inherit;font-size:.85rem;font-weight:600;cursor:pointer;transition:background .18s,color .18s,border-color .18s}
+.msseg button[aria-pressed="true"]{border-color:var(--brand);color:var(--brand);background:var(--glass);font-weight:700}
+.msch{display:flex;flex-wrap:wrap;gap:6px}
+.pop.ms .msch .gbtn{min-height:34px;padding:0 12px;gap:5px;border-radius:17px;font:inherit;font-size:.85rem;font-weight:600;cursor:pointer;color:var(--ink)}
+.pop.ms .msch .gbtn[aria-pressed="true"]{background:var(--glass);color:var(--brand)}
+.pop.ms .msch .gbtn[aria-pressed="true"]::before{content:"";width:12px;height:12px;flex:none;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+.mscus{display:flex;align-items:center;gap:8px;padding:3px 3px 3px 14px;border:1px solid var(--glass-line);border-radius:18px;transition:border-color .18s}
+.mscus[hidden]{display:none}
+.mscus:focus-within{border-color:var(--brand)}
+.mscus>span{color:var(--muted);font-weight:700}
+.pop.ms .mscus input{flex:1;min-width:0;height:34px;border:0;border-radius:0;padding:0;background:transparent;color:var(--ink);font-size:.9rem;outline:0;-moz-appearance:textfield}
+.pop.ms .mscus input::-webkit-outer-spin-button,.pop.ms .mscus input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+.pop.ms .mscus .gbtn{min-height:34px;padding:0 16px;border-radius:15px;font:inherit;font-size:.85rem;font-weight:700;color:var(--brand);cursor:pointer}
+.msopts{display:grid;gap:6px}
+.msopt{display:grid;grid-template-columns:32px 1fr 18px;align-items:center;gap:10px;width:100%;padding:6px 12px 6px 6px;border-radius:14px;border:1px solid var(--glass-line);background:transparent;color:var(--ink);font:inherit;text-align:left;cursor:pointer;transition:background .18s,border-color .18s}
+.msopt:hover{background:var(--glass)}
+.msopt .oi{width:32px;height:32px;border-radius:10px;border:1px solid var(--glass-line);display:grid;place-items:center;color:var(--brand)}
+.msopt .oi .ic{width:18px;height:18px}
+.msopt strong{display:block;font-size:.9rem;line-height:1.25;font-weight:600}
+.msopt small{display:none}
+.msopt .rd{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--glass-line);display:grid;place-items:center;transition:border-color .18s}
+.msopt .rd::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--brand);transform:scale(0);transition:transform .18s}
+.msopt[aria-pressed="true"]{border-color:var(--brand);background:var(--glass)}
+.msopt[aria-pressed="true"] strong{color:var(--brand);font-weight:700}
+.msopt[aria-pressed="true"] .rd{border-color:var(--brand)}
+.msopt[aria-pressed="true"] .rd::after{transform:scale(1)}
+.msapply{width:100%;min-height:42px;border-radius:21px;font:inherit;font-size:.92rem;font-weight:700;cursor:pointer;color:var(--brand);background:var(--glass);border:1.5px solid var(--brand);transition:background .18s}
+.msapply:active{background:var(--glass-line)}
+@media (max-width:520px){.msact{margin:0 -16px;padding:0 16px}}
+@media (prefers-reduced-motion:reduce){.mssheet,.mssc{transition:none}}
+
+/* Mess popup: compact sizing on small screens */
+@media (max-width:520px){
+#p-mess .pop.ms{padding:16px 14px 0;gap:4px;border-radius:24px}
+.pop.ms .fbar,.mslist{margin:0 -14px;padding-left:14px;padding-right:14px}
+.pop.ms .ph{align-items:center;gap:10px}
+.pop.ms .ph h3{font-size:1.1rem}
+.mstog{padding:2px;gap:1px;border-radius:19px}
+.mstog button{width:30px;height:30px;border-radius:15px}
+.mstog button .ic{width:16px;height:16px}
+.mstog i{height:16px}
+.mstog button[data-n]::after{min-width:13px;height:13px;font-size:.55rem;line-height:13px;padding:0 3px;top:0;right:0}
+.mstog button[data-dot]::after{width:6px;height:6px;top:5px;right:5px}
+.msh{font-size:.78rem;line-height:1.2}
+.msact{margin:0 -14px;padding:0 14px;gap:6px}
+.msact button{min-height:26px;font-size:.74rem;padding:0 7px 0 10px;gap:4px}
+.msact button .ic{width:12px;height:12px}
+.mslist{gap:9px;padding-top:2px}
+.msc{grid-template-columns:38px 1fr auto;gap:2px 10px;padding:9px;border-radius:18px}
+.msi{width:38px;height:38px;border-radius:12px}
+.msi .ic{width:19px;height:19px}
+.msn{font-size:.88rem}
+.msp{font-size:.88rem}
+.msp small{font-size:.66rem}
+.msw{font-size:.76rem}
+.msg{gap:5px;margin-top:5px}
+.msg span{font-size:.68rem;padding:3px 9px}
+.mssheet{top:56px;right:10px;border-radius:16px}
+.mssh{padding:9px 10px 6px 13px}
+.mssh h4{font-size:.9rem}
+.msreset{font-size:.76rem}
+.mssb{padding:2px 13px 11px;gap:12px}
+.msgrp{gap:6px}
+.msgrp>b{font-size:.6rem}
+.msseg button{min-height:28px;font-size:.76rem}
+.pop.ms .msch .gbtn{min-height:28px;font-size:.76rem;padding:0 10px}
+.pop.ms .mscus input{height:28px;font-size:.8rem}
+.pop.ms .mscus .gbtn{min-height:28px;font-size:.76rem}
+}
+
+/* Mess popup heading + subheading */
+.pop.ms .ph{align-items:center}
+.mshd{min-width:0;display:flex;flex-direction:column;gap:2px}
+.mshd h3{margin:0}
+.mshd .msh{display:block;font-size:.85rem;line-height:1.2;color:var(--muted);font-weight:500}
+@media (max-width:520px){.mshd{gap:1px}.mshd .msh{font-size:.72rem}}
+
+/* Mess popup: centered heading + subheading, smaller toggle and icons */
+.pop.ms .ph{position:relative;justify-content:center;min-height:34px}
+.pop.ms .mshd{flex:1 1 auto;align-items:center;text-align:center;padding:0 112px}
+.pop.ms .mshd .msh{text-align:center;justify-content:center}
+.pop.ms .mstog{position:absolute;right:0;top:50%;transform:translateY(-50%);padding:2px;gap:1px;border-radius:20px}
+.pop.ms .mstog button{width:30px;height:30px;border-radius:15px}
+.pop.ms .mstog button .ic{width:16px;height:16px}
+.pop.ms .mstog i{height:16px;margin:0 1px}
+.mssheet{top:68px}
+@media (max-width:520px){
+.pop.ms .mshd{padding:0 92px}
+.pop.ms .mstog{padding:2px;border-radius:17px}
+.pop.ms .mstog button{width:26px;height:26px;border-radius:13px}
+.pop.ms .mstog button .ic{width:14px;height:14px}
+.pop.ms .mstog i{height:14px}
+.pop.ms .mstog button[data-dot]::after{top:4px;right:4px}
+.mssheet{top:52px}
+}
+
+/* Mess popup: food icon, top left on the heading line */
+.pop.ms .msho{position:absolute;left:0;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:12px;border:1px solid var(--glass-line);display:grid;place-items:center;color:var(--brand);flex:none}
+.pop.ms .msho .ic{width:18px;height:18px}
+@media (max-width:520px){.pop.ms .msho{width:30px;height:30px;border-radius:10px}.pop.ms .msho .ic{width:16px;height:16px}}
+
+/* Listing details popup: centered heading + subheading */
+.dph{grid-template-columns:56px 1fr 56px}
+.dpt{text-align:center}
+.dpt h3{justify-content:center}
+.dpt p{text-align:center}
+.dpx{justify-self:end}
+@media (max-width:520px){.dph{grid-template-columns:44px 1fr 44px}}
+
+/* Mess popup (small screens): gap between heading block and listing */
+@media (max-width:520px){.pop.ms .ph{margin-bottom:8px}}
+
+/* Listing details popup: Chat + Save button design (outlined glass, no solid fills) */
+.dpa{grid-template-columns:1.45fr 1fr;gap:10px}
+.dpa .mdbt{min-height:48px;border-radius:16px;gap:9px;font-size:.95rem;letter-spacing:.01em;background:transparent;box-shadow:none;transition:transform .15s,background .18s,border-color .18s,color .18s}
+.dpa .mdbt:active{transform:scale(.97)}
+.dpa .mdbt .ic{width:19px;height:19px;color:var(--brand)}
+.dpa .mdbt:not(.mdsv){border:1.5px solid var(--brand);color:var(--brand)}
+.dpa .mdsv{border:1px solid var(--glass-line);color:var(--ink)}
+.dpa .mdbt:hover,.dpa .mdbt:focus-visible{background:var(--glass);border-color:var(--brand)}
+.dpa .mdsv[aria-pressed="true"]{border:1.5px solid var(--brand);color:var(--brand)}
+@media (max-width:520px){.dpa .mdbt{min-height:44px;border-radius:14px;font-size:.88rem}.dpa .mdbt .ic{width:17px;height:17px}}
+
+/* Mess & Food: place details popup design */
+#detail.dp{width:min(100%,520px);padding:0;gap:0;display:flex;flex-direction:column;overflow:hidden;border-radius:30px;background:var(--surface);background:color-mix(in srgb,var(--surface) 78%,transparent);-webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5);border:1px solid var(--glass-line);box-shadow:0 24px 60px rgba(0,0,0,.22);max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px)}
+.dp>*{min-width:0;flex:none}
+.dph{display:grid;grid-template-columns:56px 1fr auto;align-items:center;gap:14px;padding:20px 20px 16px}
+.dpi{width:56px;height:56px;border-radius:18px;border:1px solid var(--glass-line);display:grid;place-items:center;color:var(--brand)}
+.dpi .ic{width:26px;height:26px}
+.dpt h3{margin:0;display:flex;align-items:center;gap:6px;font-size:1.25rem;line-height:1.25;letter-spacing:-.015em;font-weight:800;min-width:0}
+.dpt h3 span{min-width:0;overflow-wrap:anywhere}
+.dpt .vbadge{width:.85em;height:.85em;margin:0;flex:none}
+.dpt p{margin:3px 0 0;font-size:.86rem;color:var(--muted)}
+.dpx{width:36px;height:36px;border-radius:18px;border:1px solid var(--glass-line);background:transparent;color:var(--ink);display:grid;place-items:center;padding:0;cursor:pointer;align-self:start;transition:background .18s}
+.dpx:hover{background:var(--glass)}
+.dpx .ic{width:16px;height:16px}
+.dpb{flex:1 1 auto;min-height:0;display:grid;align-content:start;gap:18px;padding:2px 20px 20px;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.dpb::-webkit-scrollbar{display:none}
+.dpw{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1px solid var(--glass-line);border-radius:16px;color:var(--ink);font-size:.9rem;line-height:1.35}
+.dpw .ic{width:18px;height:18px;color:var(--brand)}
+.dpf{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dpc{display:grid;gap:3px;padding:13px 15px;border:1px solid var(--glass-line);border-radius:18px;align-content:start}
+.dpc small{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.dpc b{font-size:1.2rem;line-height:1.2;letter-spacing:-.01em;font-weight:800}
+.dpc em{font-style:normal;font-size:.76rem;color:var(--muted)}
+.dpc.hl{border-color:var(--brand);background:var(--glass)}
+.dpc.hl b{color:var(--brand);font-size:1.4rem}
+.dps h4{margin:0 0 10px;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.dpl{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}
+.dpl li{display:flex;align-items:center;gap:9px;font-size:.9rem;min-width:0}
+.dpl li>span:last-child{min-width:0;overflow-wrap:anywhere}
+.dck{width:22px;height:22px;border-radius:50%;border:1px solid var(--glass-line);display:grid;place-items:center;flex:none;color:var(--muted)}
+.dck .ic{width:12px;height:12px;stroke-width:3}
+.dpl li.on{color:var(--brand);font-weight:700}
+.dpl li.on .dck{border-color:var(--brand);color:var(--brand)}
+.dpa{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:14px 20px 18px}
+.mdbt{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 16px;border-radius:25px;border:1px solid var(--glass-line);background:transparent;color:var(--ink);font:inherit;font-weight:700;text-decoration:none;cursor:pointer;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:background .18s,border-color .18s,color .18s}
+.mdbt:hover,.mdbt:focus-visible{background:var(--glass);border-color:var(--brand);outline:0}
+.mdbt .ic{width:18px;height:18px;color:var(--brand)}
+.mdsv[aria-pressed="true"]{border-color:var(--brand);color:var(--brand)}
+.mdsv[aria-pressed="true"] .ic{fill:currentColor}
+@media (max-width:520px){
+#detail.dp{border-radius:24px}
+.dph{grid-template-columns:44px 1fr auto;gap:11px;padding:15px 14px 12px}
+.dpi{width:44px;height:44px;border-radius:14px}
+.dpi .ic{width:21px;height:21px}
+.dpt h3{font-size:1.05rem}
+.dpt p{font-size:.74rem;margin-top:2px}
+.dpx{width:30px;height:30px}
+.dpb{padding:0 14px 14px;gap:13px}
+.dpw{font-size:.8rem;padding:9px 12px;border-radius:14px}
+.dpw .ic{width:16px;height:16px}
+.dpf{gap:8px}
+.dpc{padding:10px 12px;border-radius:15px}
+.dpc small{font-size:.62rem}
+.dpc b{font-size:1rem}
+.dpc.hl b{font-size:1.15rem}
+.dpc em{font-size:.68rem}
+.dps h4{font-size:.62rem;margin-bottom:8px}
+.dpl{gap:8px 10px}
+.dpl li{font-size:.8rem;gap:7px}
+.dck{width:19px;height:19px}
+.dck .ic{width:10px;height:10px}
+.dpa{padding:11px 14px 14px;gap:8px}
+.mdbt{min-height:44px;font-size:.88rem;padding:0 12px}
+.mdbt .ic{width:16px;height:16px}
+}
+
+/* Rent & Hire popup */
+#p-rent .pop.rh{width:min(100%,540px);padding:24px 20px 22px;gap:10px;border-radius:30px;display:flex;flex-direction:column;background:var(--surface);background:color-mix(in srgb,var(--surface) 72%,transparent);-webkit-backdrop-filter:blur(28px) saturate(1.5);backdrop-filter:blur(28px) saturate(1.5);border:1px solid var(--glass-line);box-shadow:0 24px 60px rgba(0,0,0,.22);scrollbar-width:none;overscroll-behavior:contain}
+#p-rent .pop.rh::-webkit-scrollbar{display:none}
+.rhh{position:relative;display:flex;align-items:center;justify-content:center;min-height:34px;margin-bottom:6px}
+.rhho{position:absolute;left:0;top:50%;transform:translateY(-50%);width:34px;height:34px;border-radius:12px;border:1px solid var(--glass-line);display:grid;place-items:center;color:var(--brand)}
+.rhho .ic{width:18px;height:18px}
+.rhhd{flex:1 1 auto;min-width:0;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center;padding:0 60px}
+.rhhd h3{margin:0;font-size:1.4rem;line-height:1.2;letter-spacing:-.015em;font-weight:800}
+.rhhs{font-size:.85rem;line-height:1.2;color:var(--muted);font-weight:500}
+.rhhx{position:absolute;right:0;top:50%;transform:translateY(-50%);display:flex;padding:2px;border:1px solid var(--glass-line);border-radius:20px;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.rhhx button{width:30px;height:30px;border-radius:15px;border:0;background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center;padding:0;transition:background .18s}
+.rhhx button:hover{background:var(--glass)}
+.rhhx .ic{width:16px;height:16px}
+@media (max-width:520px){#p-rent .pop.rh{padding:16px 14px 18px;border-radius:24px}.rhhd h3{font-size:1.1rem}.rhhs{font-size:.78rem}.rhho{width:30px;height:30px;border-radius:10px}.rhho .ic{width:16px;height:16px}.rhhd{padding:0 46px}.rhhx{padding:2px;border-radius:17px}.rhhx button{width:26px;height:26px;border-radius:13px}.rhhx .ic{width:14px;height:14px}}
+.rhs{margin:10px 2px 0;font-size:.74rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.rhg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rht{position:relative;display:flex;align-items:center;gap:12px;min-width:0;padding:12px 38px 12px 12px;border-radius:20px;border:1px solid var(--glass-line);background:transparent;color:var(--ink);text-decoration:none;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);transition:background .18s,border-color .18s,transform .15s}
+.rht:hover,.rht:focus-visible{background:var(--glass);border-color:var(--ink);outline:0}
+.rht:active{transform:scale(.97)}
+.rhi{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:14px;border:1px solid var(--line);background:var(--glass);transition:background .18s,color .18s,border-color .18s}
+.rhi .ic{width:24px;height:24px}
+.rht:hover .rhi,.rht:focus-visible .rhi{background:var(--brand);color:var(--brand-ink);border-color:var(--brand)}
+.rhl{display:grid;gap:2px;min-width:0}
+.rhl b{font-size:.95rem;line-height:1.2;overflow-wrap:anywhere}
+.rhl small{color:var(--muted);font-size:.76rem;line-height:1.25}
+.rha{position:absolute;right:12px;top:12px;width:16px;height:16px;color:var(--muted);transition:color .18s,transform .18s}
+.rht:hover .rha,.rht:focus-visible .rha{color:var(--ink);transform:translate(2px,-2px)}
+@media (max-width:420px){.rhg{gap:8px}.rht{flex-direction:column;align-items:flex-start;gap:10px;padding:12px}.rha{right:10px;top:10px}}
+
+/* Rent & Hire: shaded buttons for Furniture and Appliances */
+.rhgf{gap:12px}
+.rht.rhf{min-height:88px;padding:16px 40px 16px 14px;border:0;border-radius:22px;color:var(--brand-ink);background:linear-gradient(145deg,color-mix(in srgb,var(--brand) 94%,#fff 6%) 0%,color-mix(in srgb,var(--brand) 68%,transparent) 100%);box-shadow:0 12px 26px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.2),inset 0 -14px 24px rgba(0,0,0,.18)}
+.rht.rhf:hover,.rht.rhf:focus-visible{background:linear-gradient(145deg,var(--brand),color-mix(in srgb,var(--brand) 78%,transparent));border:0;transform:translateY(-2px);box-shadow:0 16px 30px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.24),inset 0 -14px 24px rgba(0,0,0,.18)}
+.rht.rhf:active{transform:scale(.97)}
+.rhf .rhi,.rht.rhf:hover .rhi,.rht.rhf:focus-visible .rhi{width:48px;height:48px;border-radius:16px;background:color-mix(in srgb,var(--brand-ink) 18%,transparent);color:var(--brand-ink);border:1px solid color-mix(in srgb,var(--brand-ink) 26%,transparent)}
+.rhf .rhl b{font-size:1.02rem}
+.rhf .rhl small,.rhf .rha,.rht.rhf:hover .rha{color:color-mix(in srgb,var(--brand-ink) 72%,transparent)}
+@media (max-width:420px){.rht.rhf{min-height:112px;padding:14px}}
+
+/* Rent & Hire popup: texts, buttons and icons shrink automatically on small screens. Each size has a min and a max; the max equals the current size at 520px, so larger screens look exactly the same. */
+@media (max-width:520px){
+#p-rent .pop.rh{padding:clamp(12px,3.1vw,16px) clamp(10px,2.7vw,14px) clamp(14px,3.5vw,18px);border-radius:clamp(20px,4.6vw,24px)}
+.rhh{min-height:clamp(28px,6.5vw,34px)}
+.rhhd{padding:0 clamp(38px,9vw,46px)}
+.rhhd h3{font-size:clamp(.95rem,3.4vw,1.1rem)}
+.rhhs{font-size:clamp(.68rem,2.4vw,.78rem)}
+.rhho{width:clamp(26px,5.8vw,30px);height:clamp(26px,5.8vw,30px);border-radius:clamp(8px,1.9vw,10px)}
+.rhho .ic{width:clamp(13px,3.1vw,16px);height:clamp(13px,3.1vw,16px)}
+.rhhx button{width:clamp(22px,5vw,26px);height:clamp(22px,5vw,26px);border-radius:50%}
+.rhhx .ic{width:clamp(12px,2.7vw,14px);height:clamp(12px,2.7vw,14px)}
+.rhs{font-size:clamp(.62rem,2.3vw,.74rem)}
+.rht{gap:clamp(8px,2.3vw,12px);border-radius:clamp(15px,3.8vw,20px)}
+.rhi,.rht:hover .rhi,.rht:focus-visible .rhi{width:clamp(34px,8.5vw,44px);height:clamp(34px,8.5vw,44px);border-radius:clamp(11px,2.7vw,14px)}
+.rhi .ic{width:clamp(18px,4.6vw,24px);height:clamp(18px,4.6vw,24px)}
+.rhl b{font-size:clamp(.8rem,2.9vw,.95rem)}
+.rhl small{font-size:clamp(.64rem,2.35vw,.76rem)}
+.rha{width:clamp(13px,3.1vw,16px);height:clamp(13px,3.1vw,16px)}
+.rht.rhf{border-radius:clamp(17px,4.2vw,22px)}
+.rhf .rhi,.rht.rhf:hover .rhi,.rht.rhf:focus-visible .rhi{width:clamp(38px,9.2vw,48px);height:clamp(38px,9.2vw,48px);border-radius:clamp(12px,3.1vw,16px)}
+.rhf .rhl b{font-size:clamp(.86rem,3.1vw,1.02rem)}
+}
+@media (max-width:420px){
+.rht.rhf{min-height:clamp(92px,26.5vw,112px)}
+}
+
+/* Rent & Hire popup header: same type as the Mess & Food popup header (heading size, subheading, spacing, icon and close toggle) */
+.rhh{margin-bottom:4px}
+.rhhd{gap:2px}
+.rhhd h3{letter-spacing:normal;line-height:inherit}
+@media (min-width:521px){#p-rent .pop.rh{padding-top:22px}.rhhd h3{font-size:1.3rem}}
+@media (max-width:520px){.rhh{margin-bottom:0}.rhhd{gap:1px}.rhhs{font-size:clamp(.62rem,2.2vw,.72rem)}}
+
+/* Rent & Hire popup: header stays fixed (like Mess & Food), the other contents scroll under it and fade out at the top and bottom edges */
+#p-rent .pop.rh{--rhx:20px;overflow:hidden;max-height:calc(100vh - 150px);max-height:calc(100dvh - 150px);padding-left:var(--rhx);padding-right:var(--rhx);padding-bottom:0}
+.rhh{flex:none}
+.rhsc{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:10px;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin:0 calc(-1*var(--rhx));padding:0 var(--rhx) 28px;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 8px,#000 calc(100% - 28px),transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 8px,#000 calc(100% - 28px),transparent 100%)}
+.rhsc::-webkit-scrollbar{display:none}
+/* Vehicles buttons: every button the same size and design (all rows equal height, content aligned the same way) */
+/* For your home: four shaded buttons in an even 2 x 2 grid, all the same size */
+.rhgf{grid-auto-rows:1fr}
+.rhg:not(.rhgf){grid-auto-rows:1fr}
+.rhg:not(.rhgf) .rht{height:100%}
+@media (max-width:520px){#p-rent .pop.rh{--rhx:clamp(10px,2.7vw,14px)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<symbol id="i-verified" viewBox="0 0 24 24"><path fill="#888" d="M12 1.5l2.6 1.9 3.2-.2 1 3.1 2.6 1.9-1 3.1 1 3.1-2.6 1.9-1 3.1-3.2-.2L12 22.5l-2.6-1.9-3.2.2-1-3.1-2.6-1.9 1-3.1-1-3.1 2.6-1.9 1-3.1 3.2.2z"/><path fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M7.8 12.4l3 3 5.6-6.3"/></symbol>
+<symbol id="i-ar" viewBox="0 0 24 24"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></symbol>
+<symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-7-4.5-7-10a4 4 0 017-2.5A4 4 0 0119 10c0 5.5-7 10-7 10z"/></symbol>
+<symbol id="i-plus" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></symbol>
+<symbol id="i-ms-lo" viewBox="0 0 24 24"><path d="M12 4v15M6.5 13.5L12 19l5.5-5.5"/></symbol><symbol id="i-ms-hi" viewBox="0 0 24 24"><path d="M12 20V5M6.5 10.5L12 5l5.5 5.5"/></symbol><symbol id="i-ms-near" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 10-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol><symbol id="i-ms-ver" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M8.8 12l2.4 2.4 4-4.4"/></symbol><symbol id="i-filter" viewBox="0 0 24 24"><path d="M3 5h18l-7 8v6l-4-2v-4z"/></symbol><symbol id="i-sort" viewBox="0 0 24 24"><path d="M7 4v16M7 20l-3-3M7 20l3-3M17 20V4M17 4l-3 3M17 4l3 3"/></symbol><symbol id="i-chat" viewBox="0 0 24 24"><path d="M5 5h14a2 2 0 012 2v8a2 2 0 01-2 2h-7l-5 4v-4H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+<symbol id="i-l" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></symbol>
+<symbol id="i-rt" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></symbol>
+<symbol id="i-up" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
+<symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></symbol>
+<symbol id="i-map" viewBox="0 0 24 24"><path d="M12 21s-7-6-7-11a7 7 0 0114 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+<symbol id="i-s-shift" viewBox="0 0 24 24"><path d="M2 6h11v10H2z"/><path d="M13 9h4l3 3v4h-7"/><circle cx="6.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></symbol>
+<symbol id="i-s-clean" viewBox="0 0 24 24"><path d="M11 3l1.8 4.7L17.5 9.5l-4.7 1.8L11 16l-1.8-4.7L4.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></symbol>
+<symbol id="i-s-laundry" viewBox="0 0 24 24"><path d="M8 3L3 6l2 4 3-1v12h8V9l3 1 2-4-5-3a4 4 0 01-8 0z"/></symbol>
+<symbol id="i-s-plumb" viewBox="0 0 24 24"><path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></symbol>
+<symbol id="i-s-paint" viewBox="0 0 24 24"><rect x="4" y="3" width="14" height="5" rx="1"/><path d="M18 5.5h2v5h-8v3"/><rect x="10.5" y="13.5" width="3" height="7" rx="1"/></symbol>
+<symbol id="i-s-pest" viewBox="0 0 24 24"><ellipse cx="12" cy="13.5" rx="4" ry="5.5"/><path d="M9 8.5a3 3 0 016 0M3 12l5 1M21 12l-5 1M4 19l4.5-3M20 19l-4.5-3M12 8.5v10"/></symbol>
+<symbol id="i-s-carp" viewBox="0 0 24 24"><path d="M14 4l6 6-3 3-6-6z"/><path d="M12.5 9.5L4 18l2 2 8.5-8.5"/></symbol>
+<symbol id="i-s-water" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 01-12 0c0-4.5 6-11 6-11z"/></symbol>
+<symbol id="i-s-appl" viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><rect x="6" y="9" width="8" height="6" rx="1"/><path d="M17.5 10v.01M17.5 14v.01"/></symbol>
+<symbol id="i-s-food" viewBox="0 0 24 24"><path d="M7 3v8M5 3v5a2 2 0 004 0V3M7 11v10"/><path d="M17 3c-2 1.5-3 4-3 7v3h3v8"/></symbol>
+<symbol id="i-s-cab" viewBox="0 0 24 24"><path d="M4 15l1.5-5A2 2 0 017.4 8.5h9.2a2 2 0 011.9 1.5L20 15"/><rect x="3" y="15" width="18" height="4" rx="1.5"/><path d="M7.5 17v.01M16.5 17v.01"/></symbol>
+<symbol id="i-s-furn" viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="1.5"/><path d="M12 3v18M9.5 11v2M14.5 11v2"/></symbol>
+<symbol id="i-s-wifi" viewBox="0 0 24 24"><path d="M2 9a15 15 0 0120 0M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0"/><circle cx="12" cy="19" r="1"/></symbol>
+<symbol id="i-s-gas" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="14" rx="4"/><path d="M10 7V4h4v3M7 12h10"/></symbol>
+<symbol id="i-s-rent" viewBox="0 0 24 24"><path d="M3 12a9 9 0 109-9 9.7 9.7 0 00-6.7 2.8L3 8"/><path d="M3 3v5h5M12 7.5V12l3 2"/></symbol>
+<symbol id="i-s-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16 7l3 3M14 9l2 2"/></symbol>
+<symbol id="i-s-wheel" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/><path d="M3 12h7M14 12h7M12 14v7"/></symbol>
+<symbol id="i-s-wire" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
+<symbol id="i-s-gadget" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+<symbol id="i-s-hotel" viewBox="0 0 24 24"><path d="M4 21V5a1 1 0 011-1h9a1 1 0 011 1v16"/><path d="M15 10h4a1 1 0 011 1v10"/><path d="M3 21h18M8 8h3M8 12h3M8 16h3"/></symbol>
+<symbol id="i-s-sos" viewBox="0 0 24 24"><path d="M8 18v-5a4 4 0 018 0v5"/><path d="M5.5 18h13v2.5h-13z"/><path d="M12 2.5v2M4.6 5.6L6 7M19.4 5.6L18 7M2.5 12h2M19.5 12h2"/><path d="M10.2 13.8A1.8 1.8 0 0112 12"/></symbol>
+</svg>
+
+<header class="hero on-dark" id="top">
+  <div class="nav">
+    <span class="logo">Koodu</span>
+    <div class="glass w tog" role="group" aria-label="Quick actions">
+      <button type="button" id="nSearch" aria-label="Search"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg></button>
+      <button type="button" id="nMap" class="tmap" aria-label="Map"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg></button>
+      <button type="button" id="nSaved" aria-label="Saved listings"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg></button>
+      <button type="button" id="nAdd" aria-label="Add listing"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button>
+      <button type="button" id="nUser" aria-label="Sign up"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg></button>
+    </div>
+  </div>
+  <div class="slides" id="slides">
+    <div class="slide s1"><div class="photo-bg" style="background-image:url('img/hero/rooms.webp')"></div><h2>Find your room in Ernakulam</h2><p>Rooms, PGs and hostels across Kochi, Kakkanad, Aluva and the rest of the district.</p></div>
+    <div class="slide s2"><div class="photo-bg" style="background-image:url('img/hero/pg.webp')"></div><h2>PGs with food and WiFi</h2><p>Compare rent, deposit and house rules, then message the owner on WhatsApp.</p></div>
+    <div class="slide s3"><div class="photo-bg" style="background-image:url('img/hero/hostel.webp')"></div><h2>Hostels that fit your budget</h2><p>Shared rooms for students and working people, at a rent you can plan around.</p></div>
+  </div>
+</header>
+
+<main>
+<section class="sec" id="services" aria-label="Home services"><div class="svw" id="svW"><button class="sva svp" type="button" id="svP" aria-label="Previous services"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button><div class="svgrid" id="svTrack" role="group" aria-label="Home services"><a class="svc" href="https://www.google.com/travel/hotels/Kerala" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-hotel"/></svg></span><span class="svl">Stays</span></a><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=packers%20and%20movers%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-shift"/></svg></span><span class="svl">Movers</span></a><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=home%20cleaning%20services%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-clean"/></svg></span><span class="svl">Cleaning</span></a><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=laundry%20service%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-laundry"/></svg></span><span class="svl">Laundry</span></a><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=plumber%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-plumb"/></svg></span><span class="svl">Plumber</span></a><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=electrician%20wiring%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-wire"/></svg></span><span class="svl">Wiring</span></a><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=house%20painters%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-paint"/></svg></span><span class="svl">Painting</span></a><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=pest%20control%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-pest"/></svg></span><span class="svl">Pest control</span></a><button class="svc" type="button" id="messBtn"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-food"/></svg></span><span class="svl">Mess</span></button><button class="svc" type="button" data-pop="rent"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-rent"/></svg></span><span class="svl">Rent &amp; Hire</span></button><button class="svc" type="button" data-pop="appl"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-appl"/></svg></span><span class="svl">Repair Hub</span></button><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=carpenter%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-carp"/></svg></span><span class="svl">Carpentry</span></a><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=taxi%20cab%20service%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-cab"/></svg></span><span class="svl">Taxi</span></a><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=water%20purifier%20service%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-water"/></svg></span><span class="svl">Water purifier</span></a><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=broadband%20internet%20connection%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-wifi"/></svg></span><span class="svl">Internet</span></a><a class="svc" href="https://www.google.com/maps/search/?api=1&amp;query=gas%20cylinder%20agency%20near%20me" target="_blank" rel="noopener"><span class="svb"><svg class="ic" aria-hidden="true"><use href="#i-s-gas"/></svg></span><span class="svl">Gas cylinder</span></a></div><button class="sva svn" type="button" id="svN" aria-label="More services"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button></div></section>
+<section class="sec" id="nearby">
+  <div class="sh"><h2>Near you</h2><div class="nctl"><a class="seeall" href="#listings" id="nearAll">See all</a></div></div>
+  <p class="muted nearmsg" id="nearMsg" aria-live="polite">Allow location access to see the places closest to you. Your location stays in your browser and isn’t saved.</p>
+  <div class="track" id="nearTrack" aria-busy="true"></div>
+</section>
+<section class="sec">
+  <div class="sh"><h2>Popular areas</h2><span>Across Ernakulam district</span></div>
+  <div class="slider"><button class="glass arrow l" type="button" id="aL" aria-label="Previous areas"><svg class="ic" aria-hidden="true"><use href="#i-l"/></svg></button><div class="track" id="areas"></div><button class="glass arrow r" type="button" id="aR" aria-label="Next areas"><svg class="ic" aria-hidden="true"><use href="#i-rt"/></svg></button></div>
+</section>
+
+<section class="sec" id="listings">
+  <div class="sh"><h2>Rooms, PGs and hostels</h2><span id="count" aria-live="polite"></span></div>
+  <div class="fbar" id="fbar">
+    <span id="types" style="display:contents"></span>
+    <select class="glass" id="gender" aria-label="Who can stay"><option value="">Anyone</option><option>Men</option><option>Women</option><option>Family</option></select>
+    <select class="glass" id="budget" aria-label="Maximum rent"><option value="0">Any budget</option><option value="4000">Up to ₹4,000</option><option value="6000">Up to ₹6,000</option><option value="8000">Up to ₹8,000</option><option value="12000">Up to ₹12,000</option></select>
+  </div>
+  <div class="grid" id="grid"></div>
+</section>
+</main>
+<footer>Koodu is a first prototype. Listings marked “Sample” are placeholders, and listings you add are saved only in this browser for now.</footer>
+
+<nav class="bnav" aria-label="Main">
+  <button type="button" id="bHome" aria-current="page"><svg class="ic" aria-hidden="true"><use href="#i-home"/></svg>Home</button>
+  <button type="button" id="bSearch"><svg class="ic" aria-hidden="true"><use href="#i-search"/></svg>Search</button>
+  <button type="button" id="bMap"><svg class="ic" aria-hidden="true"><use href="#i-map"/></svg>Map</button>
+  <button type="button" id="bAdd"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg>Add</button>
+  <button type="button" id="bSaved"><svg class="ic" aria-hidden="true"><use href="#i-heart"/></svg>Saved</button>
+  <button type="button" id="bUser"><svg class="ic" aria-hidden="true"><use href="#i-user"/></svg>Account</button>
+</nav>
+
+<div class="ov" id="p-search"><div class="pop" role="dialog" aria-label="Search">
+  <div class="ph"><h3>Search</h3><button class="glass gbtn round" type="button" data-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <input id="sq" type="search" placeholder="Landmark, area or room type" aria-label="Search">
+  <div class="muted">Popular searches</div>
+  <div class="pills" id="pop10"></div>
+  <button class="btn amber" type="button" id="sgo">Show results</button>
+</div></div>
+
+<div class="ov" id="p-saved"><div class="pop" role="dialog" aria-label="Saved">
+  <div class="ph"><h3>Saved</h3><button class="glass gbtn round" type="button" data-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="list" id="savedList"></div>
+</div></div>
+
+<div class="ov" id="p-mess"><div class="pop ms" role="dialog" aria-label="Mess and food">
+  <div class="ph"><span class="msho" aria-hidden="true"><svg class="ic"><use href="#i-s-food"/></svg></span><div class="mshd"><h3>Mess &amp; Food</h3><div class="msh"><span id="messCount" aria-live="polite"></span></div></div>
+    <div class="mstog" role="toolbar" aria-label="Filter, sort and close">
+      <button type="button" id="msFb" aria-label="Filter" aria-expanded="false" aria-controls="msFp"><svg class="ic" aria-hidden="true"><use href="#i-filter"/></svg></button>
+      <button type="button" id="msSb" aria-label="Sort" aria-expanded="false" aria-controls="msSp"><svg class="ic" aria-hidden="true"><use href="#i-sort"/></svg></button>
+      <i aria-hidden="true"></i>
+      <button type="button" data-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+    </div>
+  </div>
+  <div class="msact" id="msAct" hidden aria-label="Active filters"></div>
+  <div class="mslist" id="messList"></div>
+  <div class="mssc" id="msSc"></div>
+  <section class="mssheet" id="msFp" role="dialog" aria-label="Filters" aria-hidden="true" inert>
+    <div class="msgrab" aria-hidden="true"></div>
+    <div class="mssh"><h4>Filters</h4><button type="button" class="msreset" id="msReset">Reset</button></div>
+    <div class="mssb">
+      <div class="msgrp"><b>Show</b><div class="msseg" id="msgShow"></div></div>
+      <div class="msgrp"><b>Type</b><div class="msch" id="msgType"></div></div>
+      <div class="msgrp"><b id="msgWhoH">Food type</b><div class="msch" id="msgWho"></div></div>
+      <div class="msgrp"><b id="msgBudH">Monthly plan budget</b><div class="msch" id="msgBud"></div>
+        <div class="mscus" id="msCus" hidden><span aria-hidden="true">₹</span><input id="msCusIn" type="number" inputmode="numeric" min="1" step="100" placeholder="Enter your max monthly plan" aria-label="Custom maximum budget per month"><button type="button" class="glass gbtn" id="msCusOk">Set</button></div></div>
+    </div>
+    <div class="mssf"><button type="button" class="msapply" id="msApply">Show places</button></div>
+  </section>
+  <section class="mssheet" id="msSp" role="dialog" aria-label="Sort" aria-hidden="true" inert>
+    <div class="msgrab" aria-hidden="true"></div>
+    <div class="mssh"><h4>Sort by</h4></div>
+    <div class="mssb"><div class="msopts" id="msgSort" role="group" aria-label="Sort by"></div></div>
+  </section>
+</div></div>
+<div class="ov" id="p-detail"><div class="pop" role="dialog" aria-label="Listing details" id="detail"></div></div>
+<div class="ov" id="p-near"><div class="pop nd" role="dialog" aria-label="Place details" id="nearDetail"></div></div>
+
+<div class="ov" id="p-add"><div class="pop" role="dialog" aria-label="Add listing">
+  <div class="ph"><h3>Add Listing</h3><button class="glass gbtn round" type="button" data-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div id="addCats"><div class="muted" style="margin-bottom:10px">Choose a category</div>
+    <div class="cats"><button class="glass gbtn g" type="button" data-c="Room">Room</button><button class="glass gbtn g" type="button" data-c="PG">PG</button><button class="glass gbtn g" type="button" data-c="Hostel">Hostel</button></div></div>
+  <form class="form" id="addForm" hidden>
+    <input type="hidden" name="type">
+    <label>Title<input name="title" required maxlength="70" placeholder="Single room near Edappally Junction"></label>
+    <label>Who can stay<select name="gender"><option>Men</option><option>Women</option><option>Family</option></select></label>
+    <div class="two"><label>Rent per month (₹)<input name="rent" type="number" inputmode="numeric" min="500" required></label><label>Deposit (₹)<input name="deposit" type="number" inputmode="numeric" min="0"></label></div>
+    <label>Area<select name="area" required id="addArea"><option value="">Choose area</option></select></label>
+    <label>Landmark and distance<input name="where" required maxlength="80" placeholder="800 m from Lulu Mall"></label>
+    <label>Facilities, separated by commas<input name="amen" maxlength="100" placeholder="WiFi, Attached bath, Food"></label>
+    <label>WhatsApp number, starting with 91<input name="phone" inputmode="numeric" pattern="91[0-9]{10}" required placeholder="91XXXXXXXXXX"></label>
+    <button class="btn amber" type="submit">Publish listing</button>
+  </form>
+</div></div>
+<div class="ov" id="p-signup"><div class="pop" role="dialog" aria-label="Sign up">
+  <div class="ph"><h3>Sign up</h3><button class="glass gbtn round" type="button" data-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="muted">Create an account to save listings and manage your own.</div>
+  <form class="form" id="signForm">
+    <label>Full name<input name="name" required maxlength="60" autocomplete="name"></label>
+    <label>Mobile number<input name="phone" type="tel" inputmode="numeric" pattern="[0-9]{10}" required placeholder="10 digit number" autocomplete="tel-national"></label>
+    <label>I am a<select name="role"><option>Tenant looking for a room</option><option>Owner with a property</option><option>Broker or agent</option></select></label>
+    <button class="btn amber" type="submit">Create account</button>
+    <div class="muted">Accounts stay on this device until the shared database is connected.</div>
+  </form>
+</div></div>
+<div class="ov" id="p-map"><div class="pop" role="dialog" aria-label="Map">
+  <div class="ph"><h3>Map</h3><button class="glass gbtn round" type="button" data-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="muted">See rooms, PGs and hostels on Google Maps. Pick an area in Ernakulam, or search near you.</div>
+  <a class="btn amber" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=PG%20hostel%20rooms%20for%20rent%20near%20me">Near me</a>
+  <div class="cats" id="mapLinks"></div>
+</div></div>
+<div class="ov" id="p-hero"><div class="pop" role="dialog" aria-label="Hero photos">
+  <div class="ph"><h3>Hero photos</h3><button class="glass gbtn round" type="button" data-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="muted">Upload a landscape photo for each slide. Photos of real rooms, PGs and hostels work best.</div>
+  <div class="list" id="heroRows"></div>
+</div></div>
+<div class="ov" id="p-appl"><div class="pop" role="dialog" aria-label="Repair Hub">
+  <div class="ph"><h3>Repair Hub</h3><button class="glass gbtn round" type="button" data-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div>
+  <div class="muted">Choose a service to find repair shops near you.</div>
+  <div class="cats"><a class="glass gbtn g" href="https://www.google.com/maps/search/?api=1&amp;query=AC%20repair%20service%20near%20me" target="_blank" rel="noopener">AC repair</a><a class="glass gbtn g" href="https://www.google.com/maps/search/?api=1&amp;query=washing%20machine%20repair%20near%20me" target="_blank" rel="noopener">Washing machine repair</a><a class="glass gbtn g" href="https://www.google.com/maps/search/?api=1&amp;query=refrigerator%20repair%20near%20me" target="_blank" rel="noopener">Fridge repair</a><a class="glass gbtn g" href="https://www.google.com/maps/search/?api=1&amp;query=TV%20repair%20near%20me" target="_blank" rel="noopener">TV repair</a><a class="glass gbtn g" href="https://www.google.com/maps/search/?api=1&amp;query=microwave%20oven%20repair%20near%20me" target="_blank" rel="noopener">Microwave repair</a><a class="glass gbtn g" href="https://www.google.com/maps/search/?api=1&amp;query=water%20heater%20geyser%20repair%20near%20me" target="_blank" rel="noopener">Geyser repair</a><a class="glass gbtn g" href="https://www.google.com/maps/search/?api=1&amp;query=ceiling%20fan%20repair%20near%20me" target="_blank" rel="noopener">Fan repair</a><a class="glass gbtn g" href="https://www.google.com/maps/search/?api=1&amp;query=kitchen%20chimney%20repair%20near%20me" target="_blank" rel="noopener">Chimney repair</a><a class="glass gbtn g" href="https://www.google.com/maps/search/?api=1&amp;query=mobile%20phone%20repair%20near%20me" target="_blank" rel="noopener">Mobile repair</a><a class="glass gbtn g" href="https://www.google.com/maps/search/?api=1&amp;query=laptop%20repair%20near%20me" target="_blank" rel="noopener">Laptop repair</a></div>
+</div></div>
+<div class="ov" id="p-rent"><div class="pop rh" role="dialog" aria-label="Rent &amp; Hire">
+  <div class="rhh"><span class="rhho" aria-hidden="true"><svg class="ic"><use href="#i-s-rent"/></svg></span><div class="rhhd"><h3>Rent &amp; Hire</h3><div class="rhhs">Find rental shops near you</div></div><div class="rhhx"><button type="button" data-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button></div></div>
+  <div class="rhsc">
+  <div class="rhs">For your home</div>
+  <div class="rhg rhgf"><a class="rht rhf" href="https://www.google.com/maps/search/?api=1&amp;query=furniture%20rental%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11V8a2 2 0 012-2h10a2 2 0 012 2v3"/><path d="M3 13.5a2 2 0 014 0V15h10v-1.5a2 2 0 014 0V18H3z"/><path d="M5 18v2M19 18v2"/></svg></span><span class="rhl"><b>Furniture</b><small>Beds, sofas, wardrobes</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="rht rhf" href="https://www.google.com/maps/search/?api=1&amp;query=home%20appliances%20rental%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="2.5" width="16" height="19" rx="2.5"/><circle cx="12" cy="13.5" r="4.5"/><path d="M8 6h.01M11 6h.01M4 9.5h16"/></svg></span><span class="rhl"><b>Appliances</b><small>Washing machine, fridge, AC</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="rht rhf" href="https://www.google.com/maps/search/?api=1&amp;query=used%20furniture%20shop%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 12h16M10 7.5h4M10 16.5h4"/></svg></span><span class="rhl"><b>Used furniture</b><small>Second-hand beds, sofas, tables</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="rht rhf" href="https://www.google.com/maps/search/?api=1&amp;query=tools%20and%20ladders%20rental%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a4 4 0 00-5.4 5.1L3.5 17.2a1.8 1.8 0 002.6 2.6l5.8-5.8a4 4 0 005.1-5.4l-2.4 2.4-2.1-.5-.5-2.1z"/></svg></span><span class="rhl"><b>Tools &amp; ladders</b><small>Drills, ladders, repair tools</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+  <div class="rhs">Vehicles</div>
+  <div class="rhg"><a class="rht" href="https://www.google.com/maps/search/?api=1&amp;query=bike%20rental%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="5.5" cy="16.5" r="3"/><circle cx="18.5" cy="16.5" r="3"/><path d="M5.5 16.5L9 10h5l4.5 6.5M14 10l-1-3h3M9 10H6"/></svg></span><span class="rhl"><b>Bike</b><small>Daily & weekly</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="rht" href="https://www.google.com/maps/search/?api=1&amp;query=scooter%20rental%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="18" r="2.2"/><circle cx="18" cy="18" r="2.2"/><path d="M8.2 18H16M18 15.8L15.5 5H12M6 15.5h5.5l1.5 2.5"/></svg></span><span class="rhl"><b>Scooter</b><small>Easy city rides</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="rht" href="https://www.google.com/maps/search/?api=1&amp;query=self%20drive%20car%20rental%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16v-3.5L6.2 7.5A2 2 0 018 6.5h8a2 2 0 011.8 1l2.2 5V16"/><path d="M3 16h18v3.5H3zM6 19.5V21M18 19.5V21"/><path d="M7.5 12.5h.01M16.5 12.5h.01"/></svg></span><span class="rhl"><b>Car</b><small>Self drive</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="rht" href="https://www.google.com/maps/search/?api=1&amp;query=bicycle%20rental%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="16.5" r="3.5"/><circle cx="18" cy="16.5" r="3.5"/><path d="M6 16.5L10 8h5l3 8.5M10 8L8.5 5.5H7M13 12.5H8.5"/></svg></span><span class="rhl"><b>Bicycle</b><small>Cycle hire</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="rht" href="https://www.google.com/maps/search/?api=1&amp;query=mini%20truck%20tempo%20rental%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 6.5h11V16h-11zM13.5 10h4l3 3.2V16h-7"/><circle cx="6.5" cy="17.5" r="1.9"/><circle cx="16.5" cy="17.5" r="1.9"/></svg></span><span class="rhl"><b>Mini goods</b><small>Small goods vehicle</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="rht" href="https://www.google.com/maps/search/?api=1&amp;query=truck%20rental%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.5 5.5h12.5v11H1.5zM14 9.5h4.5l3.5 3.5v3.5H14"/><circle cx="5" cy="18" r="1.8"/><circle cx="10" cy="18" r="1.8"/><circle cx="18" cy="18" r="1.8"/></svg></span><span class="rhl"><b>Truck</b><small>Heavy goods</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="rht" href="https://www.google.com/maps/search/?api=1&amp;query=hire%20driver%20service%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.6"/><path d="M5 20a7 7 0 0114 0"/></svg></span><span class="rhl"><b>Drivers</b><small>Hire a driver</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a><a class="rht" href="https://www.google.com/maps/search/?api=1&amp;query=auto%20rickshaw%20hire%20near%20me" target="_blank" rel="noopener"><span class="rhi"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16.5V8.5L7 5h8.5l2.5 4.5v7"/><path d="M3 16.5h15M7 9.5h6M10 5v4.5"/><circle cx="7" cy="17.8" r="1.8"/><circle cx="16" cy="17.8" r="1.8"/></svg></span><span class="rhl"><b>Auto</b><small>Local trips &amp; small loads</small></span><svg class="ic rha" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg></a></div>
+  </div>
+</div></div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+var sample=[
+{id:"s1",area:"Edappally",t:"Single room with attached bath",type:"Room",g:"Men",rent:6500,dep:13000,where:"600 m from Edappally Junction",am:["WiFi","Attached bath","Water 24/7"],v:true,s:true},
+{id:"s2",area:"Kakkanad",t:"Ladies PG with food",type:"PG",g:"Women",rent:5500,dep:5000,where:"Near Infopark, Kakkanad",am:["Food","WiFi","Laundry","CCTV"],v:true,s:true},
+{id:"s3",area:"Vyttila",t:"Shared room for working men",type:"PG",g:"Men",rent:3800,dep:4000,where:"Near Vyttila Hub",am:["Food","Fan","Cot and cupboard"],v:false,s:true},
+{id:"s4",area:"Kaloor",t:"Budget hostel, 4 sharing",type:"Hostel",g:"Men",rent:2800,dep:2000,where:"Near Kaloor Junction",am:["Mess","WiFi"],v:false,s:true},
+{id:"s5",area:"Aluva",t:"1 BHK for a small family",type:"Room",g:"Family",rent:11000,dep:30000,where:"Near Aluva Metro Station",am:["Parking","Kitchen","Water 24/7"],v:true,s:true},
+{id:"s6",area:"Thripunithura",t:"Women’s hostel, AC and non-AC",type:"Hostel",g:"Women",rent:4200,dep:4200,where:"Near Thripunithura Junction",am:["WiFi","Warden","CCTV","Food"],v:true,s:true}];
+var areas=[["Kakkanad","#1a1a1a"],["Edappally","#2b2b2b"],["Vyttila","#3a3a3a"],["Kaloor","#4a4a4a"],["Aluva","#333"],["Fort Kochi","#555"],["Thripunithura","#262626"],["Angamaly","#444"]];
+var K1="koodu.listings.v1",K2="koodu.saved.v1";
+function load(k){try{var x=JSON.parse(localStorage.getItem(k)||"[]");return Array.isArray(x)?x:[]}catch(e){return []}}
+function store(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+var mine=load(K1).map(function(l,i){if(!l.id)l.id="m"+i;return l}),saved=load(K2),st={type:"All",q:""};
+var $=function(i){return document.getElementById(i)};
+var fmt=function(n){return "₹"+Number(n).toLocaleString("en-IN")};
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!==undefined)e.textContent=x;return e}
+function icon(id){var s=document.createElementNS("http://www.w3.org/2000/svg","svg");s.setAttribute("class","ic");s.setAttribute("aria-hidden","true");var u=document.createElementNS("http://www.w3.org/2000/svg","use");u.setAttribute("href","#"+id);s.appendChild(u);return s}
+function toast(m){var t=$("toast");t.textContent=m;t.classList.add("on");setTimeout(function(){t.classList.remove("on")},2200)}
+function all(){return mine.concat(sample)}
+var messFood=[
+{id:"f1",area:"Kakkanad",t:"Spice Route Cloud Kitchen",type:"Cloud kitchen",g:"Veg & Non-veg",rent:3600,meal:90,where:"Near Infopark, Kakkanad",am:["Lunch","Dinner","Home delivery","Kerala meals"],v:true,s:true,kind:"food"},
+{id:"f2",area:"Edappally",t:"Green Leaf Veg Cloud Kitchen",type:"Cloud kitchen",g:"Veg",rent:3000,meal:75,where:"Near Edappally Junction",am:["Lunch","Dinner","Home delivery","Pure veg"],v:true,s:true,kind:"food"},
+{id:"f3",area:"Vyttila",t:"Malabar Biryani Box",type:"Cloud kitchen",g:"Non-veg",rent:4200,meal:110,where:"Near Vyttila Hub",am:["Lunch","Dinner","Home delivery","Biryani and curries"],v:false,s:true,kind:"food"},
+{id:"f4",area:"Kaloor",t:"Metro Meals Cloud Kitchen",type:"Cloud kitchen",g:"Veg & Non-veg",rent:3400,meal:85,where:"Near Kaloor Stadium",am:["Breakfast","Lunch","Dinner","Home delivery"],v:true,s:true,kind:"food"},
+{id:"f5",area:"Aluva",t:"Amma’s Home Mess",type:"Home mess",g:"Veg & Non-veg",rent:2800,meal:70,where:"Near Aluva Metro Station",am:["Lunch","Dinner","Fish curry on request","Home style"],v:true,s:true,kind:"food"},
+{id:"f6",area:"Thripunithura",t:"Nandini Home Kitchen",type:"Home mess",g:"Veg",rent:2600,meal:65,where:"Near Thripunithura Junction",am:["Breakfast","Lunch","Dinner","Pure veg"],v:false,s:true,kind:"food"},
+{id:"f7",area:"Fort Kochi",t:"Fort Kochi Home Meals",type:"Home mess",g:"Veg & Non-veg",rent:3300,meal:80,where:"Near Fort Kochi Beach",am:["Lunch","Dinner","Seafood on request"],v:false,s:true,kind:"food"},
+{id:"f8",area:"Kakkanad",t:"Techie Tiffin Service",type:"Tiffin",g:"Veg & Non-veg",rent:3200,meal:80,where:"Delivers around Infopark, Kakkanad",am:["Lunch box","Dinner box","Office delivery"],v:true,s:true,kind:"food"},
+{id:"f9",area:"Angamaly",t:"Kerala Dabba Tiffin",type:"Tiffin",g:"Veg",rent:2500,meal:60,where:"Near Angamaly KSRTC Stand",am:["Lunch box","Dinner box","Pure veg"],v:false,s:true,kind:"food"},
+{id:"f10",area:"Edappally",t:"Quick Dabba Tiffin Centre",type:"Tiffin",g:"Veg & Non-veg",rent:2900,meal:75,where:"Near Lulu Mall, Edappally",am:["Breakfast box","Lunch box","Dinner box"],v:true,s:true,kind:"food"},
+{id:"f11",area:"Vyttila",t:"Students’ Mess Hall",type:"Mess hall",g:"Veg & Non-veg",rent:2400,meal:55,where:"Near Vyttila Mobility Hub",am:["Breakfast","Lunch","Dinner","Unlimited meals"],v:true,s:true,kind:"food"},
+{id:"f12",area:"Kaloor",t:"Kaloor Family Mess",type:"Mess hall",g:"Non-veg",rent:3000,meal:75,where:"Near Kaloor Junction",am:["Lunch","Dinner","Dine-in","Non-veg specials"],v:false,s:true,kind:"food"}];
+
+/* hero slider */
+var cur=0,n=3,timer=null,sl=$("slides"),reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches;
+var dup=sl.firstElementChild.cloneNode(true);dup.setAttribute("aria-hidden","true");sl.appendChild(dup);
+var fixT=null;
+function fix(){if(cur>=n){cur=0;sl.style.transition="none";sl.style.transform="translateX(0)"}}
+function next(){fix();void sl.offsetWidth;cur++;sl.style.transition="transform .7s cubic-bezier(.65,0,.35,1)";sl.style.transform="translateX(-"+cur*100+"%)";clearTimeout(fixT);fixT=setTimeout(fix,900)}
+sl.addEventListener("transitionend",function(e){if(e.target===sl)fix()});
+function start(){clearInterval(timer);if(!reduce)timer=setInterval(next,5500)}
+document.addEventListener("visibilitychange",function(){if(document.hidden){clearInterval(timer);clearTimeout(fixT)}else{fix();start()}});
+window.addEventListener("pageshow",function(){fix();start()});
+start();
+
+/* areas slider */
+areas.forEach(function(a){var b=el("button","area");b.type="button";b.style.background=a[1];
+ var c=el("span","chipn");c.appendChild(icon("i-up"));c.appendChild(document.createTextNode(a[0]));b.appendChild(c);b.appendChild(el("span","go","See places nearby"));
+ b.onclick=function(){st.q=a[0];render();$("listings").scrollIntoView()};$("areas").appendChild(b)});
+$("aL").onclick=function(){$("areas").scrollBy({left:-480,behavior:"smooth"})};$("aR").onclick=function(){$("areas").scrollBy({left:480,behavior:"smooth"})};
+
+/* filters */
+["All","Room","PG","Hostel"].forEach(function(t){var b=el("button","glass gbtn",t);b.type="button";b.dataset.t=t;b.setAttribute("aria-pressed",t==="All");b.onclick=function(){setType(t)};$("types").appendChild(b)});
+function setType(t){st.type=t;Array.prototype.forEach.call($("types").children,function(c){c.setAttribute("aria-pressed",c.dataset.t===t)});render()}
+$("gender").onchange=render;$("budget").onchange=render;
+
+function isSaved(id){return saved.indexOf(id)>-1}
+function toggleSave(id){var i=saved.indexOf(id);if(i>-1)saved.splice(i,1);else saved.push(id);store(K2,saved);render()}
+function card(l){var c=el("div","card");c.setAttribute("role","button");c.tabIndex=0;c.setAttribute("aria-label",l.t+", "+fmt(l.rent)+" per month. Open details");
+ var p=el("div","photo");p.appendChild(icon("i-home"));var ch=el("span","chipn",l.type+" · "+l.g);p.appendChild(ch);
+ var h=el("button","heart");h.type="button";h.setAttribute("aria-label",isSaved(l.id)?"Remove from saved":"Save listing");h.setAttribute("aria-pressed",isSaved(l.id));h.appendChild(icon("i-heart"));h.onclick=function(e){e.stopPropagation();toggleSave(l.id)};p.appendChild(h);c.appendChild(p);
+ var b=el("div","body"),r1=el("div","r");r1.appendChild(el("span","name",l.t));b.appendChild(r1);
+ var r2=el("div","r");r2.appendChild(el("span","muted",l.where+(l.s&&l._d!=null?" · Sample":"")));if(l.v)r2.appendChild(el("span","ver","Verified"));b.appendChild(r2);
+ var r3=el("div","r"),pr=el("span","price",fmt(l.rent));pr.appendChild(el("small",null," /month"));r3.appendChild(pr);if(l._d!=null)r3.appendChild(el("span","ver",l._d.toFixed(1)+" km away"));else if(l.s)r3.appendChild(el("span","muted","Sample"));b.appendChild(r3);c.appendChild(b);
+ c.onclick=function(){openDetail(l)};c.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();openDetail(l)}};return c}
+function render(){var max=+$("budget").value,g=$("gender").value,q=st.q.toLowerCase();
+ var items=all().filter(function(l){return(st.type==="All"||l.type===st.type)&&(!g||l.g===g)&&(!max||l.rent<=max)&&(!q||(l.t+" "+l.where).toLowerCase().indexOf(q)>-1)}).sort(function(a,b){return a.rent-b.rent});
+ var gd=$("grid");gd.textContent="";items.forEach(function(l){gd.appendChild(card(l))});
+ $("count").textContent=items.length+(items.length===1?" place":" places")+", lowest rent first";
+ if(!items.length)gd.appendChild(el("p","empty","Nothing matches. Clear the search or try a higher budget."));
+ var sl=$("savedList");sl.textContent="";var sv=all().filter(function(l){return isSaved(l.id)});sv.forEach(function(l){sl.appendChild(card(l))});if(!sv.length)sl.appendChild(el("p","muted","No saved places yet. Tap the heart on a listing."));renderNear()}
+
+/* popups with Back button support */
+var stack=[],skip=0;
+function open(id){$("p-"+id).classList.add("on");stack.push(id);history.pushState({p:id},"");}
+function hide(id){$("p-"+id).classList.remove("on")}
+function closeTop(){if(stack.length)history.back()}
+window.addEventListener("popstate",function(){if(skip){skip--;return}var id=stack.pop();if(!id)return;if(id==="addform"){$("addForm").hidden=true;$("addCats").hidden=false}else if(id==="mssheet")msCloseSheet();else hide(id)});
+Array.prototype.forEach.call(document.querySelectorAll("[data-close]"),function(b){b.onclick=closeTop});
+Array.prototype.forEach.call(document.querySelectorAll(".ov"),function(o){o.addEventListener("click",function(e){if(e.target===o)closeTop()})});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeTop()});
+function closeAll(){var k=stack.length;while(stack.length){var id=stack.pop();if(id==="addform"){$("addForm").hidden=true;$("addCats").hidden=false}else if(id==="mssheet")msCloseSheet();else hide(id)}if(k){skip++;history.go(-k)}}
+
+function openDetail(l){var d=$("detail");d.textContent="";d.className="pop";
+ var ph=el("div","ph");ph.appendChild(el("h3",null,l.t));var x=el("button","glass gbtn round");x.type="button";x.setAttribute("aria-label","Close");x.appendChild(icon("i-x"));x.onclick=closeTop;ph.appendChild(x);d.appendChild(ph);
+ var r=el("div","r");r.appendChild(el("span","muted",l.type+" · "+l.g+" · "+l.where));if(l.v)r.appendChild(el("span","ver","Verified"));d.appendChild(r);
+ var g=el("div","stats");[["Rent per month",fmt(l.rent)],["Deposit",l.dep?fmt(l.dep):"Not stated"]].forEach(function(s){var q=el("div","stat");q.appendChild(el("span","muted",s[0]));q.appendChild(el("b",null,s[1]));g.appendChild(q)});d.appendChild(g);
+ var p=el("div","pills");(l.am||[]).forEach(function(a){p.appendChild(el("span","pill",a))});d.appendChild(p);
+ if(l.phone){var a=el("a","btn","Chat on WhatsApp");a.href="https://wa.me/"+encodeURIComponent(l.phone)+"?text="+encodeURIComponent("Hi, I saw your listing “"+l.t+"” on Koodu. Is it still available?");a.target="_blank";a.rel="noopener";d.appendChild(a)}
+ else{var b=el("button","btn","Sample listing: no contact");b.type="button";b.disabled=true;b.style.opacity=".55";d.appendChild(b)}
+ open("detail")}
+
+/* Mess & Food: place details popup */
+function messDetail(l){var d=$("detail");d.textContent="";d.className="pop dp";d.setAttribute("aria-label",l.t+" details");
+ var hd=el("div","dph");var ic=el("span","dpi");ic.appendChild(icon("i-s-food"));hd.appendChild(ic);
+ var tb=el("div","dpt"),t=el("h3");t.appendChild(el("span",null,l.t));if(l.v)t.appendChild(badge());tb.appendChild(t);
+ tb.appendChild(el("p",null,l.type+" · "+l.g+(l.v?" · Verified":"")));hd.appendChild(tb);
+ var x=el("button","dpx");x.type="button";x.setAttribute("aria-label","Close");x.appendChild(icon("i-x"));x.onclick=closeTop;hd.appendChild(x);d.appendChild(hd);
+ var b=el("div","dpb");
+ var w=el("div","dpw");w.appendChild(icon("i-ms-near"));w.appendChild(el("span",null,l.where+(typeof l._d==="number"?" · "+l._d.toFixed(1)+" km away":"")));b.appendChild(w);
+ var f=el("div","dpf");
+ (l.kind==="food"?[["Monthly plan",fmt(l.rent),1,"lunch and dinner"],["Per meal",fmt(l.meal),0,""],["Type",l.type,0,""],["Food",l.g,0,""]]:[["Rent",fmt(l.rent)+"",1,"per month"],["Deposit",l.dep?fmt(l.dep):"Not stated",0,"refundable"],["Stay type",l.type,0,""],["Suitable for",l.g,0,""]]).forEach(function(r){
+  var c=el("div","dpc"+(r[2]?" hl":""));c.appendChild(el("small",null,r[0]));c.appendChild(el("b",null,r[1]));if(r[3]&&!(r[0]==="Deposit"&&!l.dep))c.appendChild(el("em",null,r[3]));f.appendChild(c)});
+ b.appendChild(f);
+ if((l.am||[]).length){var sec=el("div","dps");sec.appendChild(el("h4",null,l.kind==="food"?"What you get":"Included"));var ul=el("ul","dpl");
+  l.am.forEach(function(a){var li=el("li",/mess|food|tiffin/i.test(a)?"on":null);var ck=el("span","dck");ck.appendChild(icon("i-check"));li.appendChild(ck);li.appendChild(el("span",null,a));ul.appendChild(li)});sec.appendChild(ul);b.appendChild(sec)}
+ d.appendChild(b);
+ var ac=el("div","dpa"),ch;
+ if(l.phone){ch=el("a","mdbt");ch.href="https://wa.me/"+encodeURIComponent(l.phone)+"?text="+encodeURIComponent("Hi, I saw your listing \u201C"+l.t+"\u201D on Koodu. Is it still available?");ch.target="_blank";ch.rel="noopener"}
+ else{ch=el("button","mdbt");ch.type="button";ch.onclick=function(){toast("This is a sample listing, so there is no contact number yet")}}
+ ch.appendChild(icon("i-chat"));ch.appendChild(el("span",null,"Chat"));ac.appendChild(ch);
+ var sv=el("button","mdbt mdsv");sv.type="button";
+ function svp(){var on=isSaved(l.id);sv.textContent="";sv.appendChild(icon("i-heart"));sv.appendChild(el("span",null,on?"Saved":"Save"));sv.setAttribute("aria-pressed",on?"true":"false")}
+ svp();sv.onclick=function(){toggleSave(l.id);svp()};ac.appendChild(sv);
+ d.appendChild(ac);open("detail");b.scrollTop=0}
+
+/* search popup */
+["Kakkanad","Edappally","Vyttila","Kaloor","Aluva","Fort Kochi","Thripunithura","PG for women","Hostel","Under ₹4,000"].forEach(function(t){var b=el("button","glass gbtn g",t);b.type="button";b.onclick=function(){$("sq").value=t};$("pop10").appendChild(b)});
+$("sgo").onclick=function(){var v=$("sq").value.trim();closeAll();st.q=v;if(/^PG/i.test(v)){st.q="";setType("PG")}else if(/^Hostel/i.test(v)){st.q="";setType("Hostel")}else if(/^Family/i.test(v)){st.q="";$("gender").value="Family"}else if(/^Under/i.test(v)){st.q="";$("budget").value="4000"}render();$("listings").scrollIntoView()};
+$("sq").addEventListener("keydown",function(e){if(e.key==="Enter")$("sgo").click()});
+
+/* add popup */
+Array.prototype.forEach.call($("addCats").querySelectorAll("[data-c]"),function(b){b.onclick=function(){$("addForm").elements.type.value=b.dataset.c;$("addCats").hidden=true;$("addForm").hidden=false;stack.push("addform");history.pushState({p:"addform"},"")}});
+$("addForm").addEventListener("submit",function(e){e.preventDefault();var f=new FormData(this);
+ mine.unshift({id:"m"+Date.now(),area:String(f.get("area")||""),t:String(f.get("title")).trim(),type:f.get("type"),g:f.get("gender"),rent:+f.get("rent"),dep:+f.get("deposit")||0,where:String(f.get("where")).trim(),am:String(f.get("amen")||"").split(",").map(function(s){return s.trim()}).filter(Boolean).slice(0,8),phone:String(f.get("phone")).trim(),v:false,s:false});
+ store(K1,mine);this.reset();closeAll();render();toast("Listing published");$("listings").scrollIntoView()});
+
+/* near you */
+var geo={"Kakkanad":[10.0159,76.3419],"Edappally":[10.0261,76.3086],"Vyttila":[9.9677,76.3190],"Kaloor":[9.9983,76.2994],"Aluva":[10.1004,76.3570],"Fort Kochi":[9.9658,76.2423],"Thripunithura":[9.9437,76.3490],"Angamaly":[10.1960,76.3860]};
+var me=null,meLabel="";
+Object.keys(geo).forEach(function(a){var o2=el("option",null,a);o2.value=a;$("addArea").appendChild(o2)});
+function km(a,b){var r=Math.PI/180,dLat=(b[0]-a[0])*r,dLon=(b[1]-a[1])*r;var h=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(a[0]*r)*Math.cos(b[0]*r)*Math.sin(dLon/2)*Math.sin(dLon/2);return 12742*Math.asin(Math.sqrt(h))}
+var nearState="asking";
+function skCard(){
+  var c=el("div","ncard sk");c.setAttribute("aria-hidden","true");
+  c.appendChild(el("i","nchip"));
+  var p=el("div","npanel"),t=el("div","ntx"),a=el("i"),b=el("i"),b2=el("i"),b3=el("i");a.style.cssText="width:72%;height:16px";b.style.cssText="width:52%;height:12px";b2.style.cssText="width:62%;height:12px";b3.style.cssText="width:80%;height:12px";var b4=el("i");b4.style.cssText="width:66%;height:12px";t.appendChild(a);t.appendChild(b);t.appendChild(b2);t.appendChild(b3);t.appendChild(b4);
+  p.appendChild(t);c.appendChild(p);return c;
+}
+function shortTitle(t){
+  return String(t||"")
+    .replace(/\bsingle\s+room\b/i,"1RK")
+    .replace(/\b(\d)\s*-?\s*bhk\b/gi,"$1BHK")
+    .replace(/\b(\d)\s*-?\s*rk\b/gi,"$1RK")
+    .replace(/\bshared\s+room\b/i,"Shared room")
+    .replace(/\battached\s+(bath(room)?|toilet)\b/i,"attached bath")
+    .replace(/\bAC\s*(?:and|&)\s*non-?\s*AC\b/gi,"AC/Non-AC")
+    .replace(/\s+and\s+/gi," & ")
+    .replace(/\s+/g," ").trim();
+}
+function badge(){var s=icon("i-verified");s.setAttribute("class","vbadge");s.setAttribute("role","img");s.setAttribute("aria-label","Verified");return s}
+function nearCard(l){
+  var c=el("div","ncard t-"+(l.type||"Room"));c.setAttribute("role","button");c.tabIndex=0;
+  var hasD=typeof l._d==="number";c.setAttribute("aria-label",shortTitle(l.t)+(l.v?", verified":"")+", "+fmt(l.rent)+" per month"+(hasD?", "+l._d.toFixed(1)+" km away":"")+". Open details");
+  if(l.img){c.classList.add("hasimg");var im=el("div","nimg");im.style.backgroundImage='url("'+String(l.img).replace(/"/g,"%22")+'")';c.appendChild(im)}
+  c.appendChild(el("span","nchip",(l.type||"Room")+(l.g?" "+l.g:"")+""));
+  var p=el("div","npanel"),t=el("div","ntx");
+  var tb=el("b");tb.appendChild(el("span","ntt",shortTitle(l.t)));if(l.v)tb.appendChild(badge());t.appendChild(tb);
+  var pr=el("span","nprice");pr.appendChild(el("span",null,fmt(l.rent)+"/mo"));if(l.dep)pr.appendChild(el("span",null,"Dep "+fmt(l.dep)));t.appendChild(pr);
+  var row=el("div","nrow");
+  if(hasD)row.appendChild(el("span","nloc",l._d.toFixed(1)+" km"));
+  var md=el("span","nmd","More details");md.appendChild(icon("i-rt"));row.appendChild(md);t.appendChild(row);
+  p.appendChild(t);c.appendChild(p);
+  c.onclick=function(){openNear(l)};c.onkeydown=function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();openNear(l)}};
+  return c;
+}
+/* Near you card details: photo gallery with at least 5 photos + all details.
+   Photos: use l.imgs (array of paths) if a listing has them, otherwise img/listings/<id>/1.webp ... 5.webp.
+   A missing photo falls back to the hero photo of the same type, so nothing shows broken. */
+var HERO={Room:"img/hero/rooms.webp",PG:"img/hero/pg.webp",Hostel:"img/hero/hostel.webp"};
+function photosFor(l){
+  var base=Array.isArray(l.imgs)?l.imgs.filter(Boolean):[],cnt=Math.max(5,base.length),out=[];
+  for(var i=0;i<cnt;i++)out.push(base[i]||"img/listings/"+encodeURIComponent(l.id)+"/"+(i+1)+".webp");
+  return out;
+}
+var nearFade=null;window.addEventListener("resize",function(){if(nearFade)nearFade()});
+function openNear(l){
+  var pop=$("nearDetail");pop.textContent="";var d=el("div","ndscroll");pop.appendChild(d);
+  var ph=el("div","ph"),h3=el("h3");h3.appendChild(el("span","ndtt",l.t));if(l.v)h3.appendChild(badge());ph.appendChild(h3);
+  var x=el("button","glass gbtn round");x.type="button";x.setAttribute("aria-label","Close");x.appendChild(icon("i-x"));x.onclick=closeTop;ph.appendChild(x);d.appendChild(ph);
+
+  /* gallery */
+  var pics=photosFor(l),fb=HERO[l.type]||HERO.Room,idx=0,thumbs=[];
+  var g=el("div","ndg");g.tabIndex=0;g.setAttribute("role","group");g.setAttribute("aria-roledescription","carousel");g.setAttribute("aria-label","Photos of "+l.t);
+  var big=el("img");big.decoding="async";
+  var cnt=el("span","ndc");
+  function pv(){show(idx-1,true)}function nx(){show(idx+1,true)}
+  var bp=el("button","glass w gbtn round ndp");bp.type="button";bp.setAttribute("aria-label","Previous photo");bp.appendChild(icon("i-l"));bp.onclick=pv;
+  var bn=el("button","glass w gbtn round ndn");bn.type="button";bn.setAttribute("aria-label","Next photo");bn.appendChild(icon("i-rt"));bn.onclick=nx;
+  g.appendChild(big);g.appendChild(bp);g.appendChild(bn);g.appendChild(cnt);
+  var tx=0,ty=0;
+  g.addEventListener("touchstart",function(e){tx=e.touches[0].clientX;ty=e.touches[0].clientY},{passive:true});
+  g.addEventListener("touchend",function(e){var t=e.changedTouches[0],dx=t.clientX-tx,dy=t.clientY-ty;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)){if(dx<0)nx();else pv()}},{passive:true});
+  g.addEventListener("keydown",function(e){if(e.key==="ArrowLeft"){e.preventDefault();pv()}else if(e.key==="ArrowRight"){e.preventDefault();nx()}});
+  d.appendChild(g);
+    var tr=el("div","ndt");
+  pics.forEach(function(src,k){
+    var b=el("button","ndth");b.type="button";b.setAttribute("aria-label","Show photo "+(k+1));
+    var im=el("img");im.alt="";im.loading="lazy";im.onerror=function(){im.onerror=null;im.src=fb};im.src=src;
+    b.appendChild(im);b.onclick=function(){show(k,true)};tr.appendChild(b);thumbs.push(b);
+  });
+  d.appendChild(tr);
+  function show(i,scroll){
+    idx=(i+pics.length)%pics.length;
+    big.onerror=function(){big.onerror=null;big.src=fb};
+    big.src=pics[idx];big.alt=l.t+", photo "+(idx+1)+" of "+pics.length;
+    cnt.textContent=(idx+1)+" / "+pics.length;
+    thumbs.forEach(function(t,k){t.setAttribute("aria-current",k===idx?"true":"false")});
+  }
+  show(0,false);
+
+  /* details */
+  var hasD=typeof l._d==="number";
+  var r=el("div","r");r.appendChild(el("span","muted",(l.type||"Room")+(l.g?" · "+l.g:"")+(l.where?" · "+l.where:"")));d.appendChild(r);
+  var sa=[["Rent / month",fmt(l.rent)],["Deposit",l.dep?fmt(l.dep):"Not stated"]];if(hasD)sa.push(["Distance",l._d.toFixed(1)+" km"]);
+  var st2=el("div","stats"+(sa.length>2?" s3":""));sa.forEach(function(s){var q=el("div","stat");q.appendChild(el("span","muted",s[0]));q.appendChild(el("b",null,s[1]));st2.appendChild(q)});d.appendChild(st2);
+  d.appendChild(el("div","nds","Details"));
+  var rows=[["Type",l.type],["Who can stay",l.g],["Area",l.area],["Location",l.where],["Status",l.v?"Verified":"Not verified yet"],["Listing",l.s?"Sample placeholder":"Added by owner"]];
+  var lst=el("div");rows.forEach(function(rw){if(!rw[1])return;var rr=el("div","ndrow");rr.appendChild(el("span",null,rw[0]));rr.appendChild(el("b",null,rw[1]));lst.appendChild(rr)});d.appendChild(lst);
+  if(l.am&&l.am.length){d.appendChild(el("div","nds","Facilities"));var pl=el("div","pills");l.am.forEach(function(a){pl.appendChild(el("span","pill",a))});d.appendChild(pl)}
+
+  /* actions */
+  var ac=el("div","ndact");
+  var ch;
+  if(l.phone){ch=el("a","ndb c","Chat");ch.href="https://wa.me/"+encodeURIComponent(l.phone)+"?text="+encodeURIComponent("Hi, I saw your listing “"+l.t+"” on Koodu. Is it still available?");ch.target="_blank";ch.rel="noopener"}
+  else{ch=el("button","ndb c","Chat");ch.type="button";ch.onclick=function(){toast("This is a sample listing, so there is no contact number yet")}}
+  ac.appendChild(ch);
+  var sv=el("button","ndb");sv.type="button";
+  function svLabel(){sv.textContent=isSaved(l.id)?"Saved":"Save";sv.setAttribute("aria-pressed",isSaved(l.id))}
+  svLabel();sv.onclick=function(){toggleSave(l.id);svLabel()};ac.appendChild(sv);
+  d.appendChild(ac);
+  function upd(){d.classList.toggle("fb",d.scrollHeight>d.clientHeight+2&&d.scrollTop+d.clientHeight<d.scrollHeight-6);d.classList.toggle("ft",d.scrollTop>6)}
+  d.onscroll=upd;nearFade=upd;
+  open("near");d.scrollTop=0;$("p-near").scrollTop=0;upd();setTimeout(upd,250);setTimeout(upd,900);
+}
+function setNear(s){
+  nearState=s;
+  var m=$("nearMsg"),t=$("nearTrack");
+  t.setAttribute("aria-busy",me?"false":"true");
+  m.classList.toggle("warn",s==="denied"||s==="error"||s==="unsupported");
+  if(s==="asking")m.textContent="Tap Allow to see places near you.";
+  else if(s==="denied")m.textContent="Turn on location to see nearby places.";
+  else if(s==="error")m.textContent="We couldn’t get your location. Please check that location or GPS is turned on; we’ll try again automatically.";
+  else if(s==="unsupported")m.textContent="This browser can’t share your location, so we can’t show places near you.";
+}
+/* all card headings share ONE size and stay on ONE line: starts big, shrinks together (down to 11px) only until the longest heading fits */
+function fitTitles(){
+  var tr=$("nearTrack"),ts=tr.querySelectorAll(".ncard:not(.sk) .ntx b .ntt");
+  tr.style.removeProperty("--nhs");
+  if(!ts.length)return;
+  var fs=parseFloat(getComputedStyle(ts[0]).fontSize)||18;
+  function over(){for(var i=0;i<ts.length;i++)if(ts[i].scrollWidth>ts[i].clientWidth+0.5)return true;return false}
+  while(over()&&fs>11){fs-=0.5;tr.style.setProperty("--nhs",fs+"px")}
+}
+function renderNear(){
+  var t=$("nearTrack");t.textContent="";
+  if(!me){
+    /* no location yet: show blank loading cards only, real cards appear after location is allowed */
+    var w=t.clientWidth||document.documentElement.clientWidth,n=Math.max(2,Math.ceil(w/224));for(var i=0;i<n;i++)t.appendChild(skCard());return}
+  var items=all().filter(function(l){return geo[l.area]}).map(function(l){return Object.assign({},l,{_d:km(me,geo[l.area])})}).sort(function(a,b){return a._d-b._d}).slice(0,12);
+  t.setAttribute("aria-busy","false");
+  if(!items.length){t.appendChild(el("p","empty","No listings with a known area yet."));return}
+  items.forEach(function(l){t.appendChild(nearCard(l))});fitTitles();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitTitles);
+  $("nearMsg").classList.remove("warn");
+  $("nearMsg").textContent=items[0]._d>50?"You seem to be outside Ernakulam district, so these are the nearest we have.":"";
+}
+var asking=false;
+function askLocation(){
+  if(!navigator.geolocation){setNear("unsupported");renderNear();return}
+  if(asking)return;
+  asking=true;
+  if(!me){setNear("asking");renderNear()}
+  navigator.geolocation.getCurrentPosition(function(p){
+    asking=false;me=[p.coords.latitude,p.coords.longitude];meLabel="to you";setNear("ready");renderNear();
+  },function(e){
+    asking=false;
+    setNear(e&&e.code===1?"denied":"error");renderNear();
+  },{timeout:20000,maximumAge:300000,enableHighAccuracy:false});
+}
+/* if the user switches location on later from browser settings, load nearby places automatically */
+if(navigator.permissions&&navigator.permissions.query){
+  navigator.permissions.query({name:"geolocation"}).then(function(s){
+    s.onchange=function(){
+      if(s.state==="granted")askLocation();
+      else if(s.state==="denied"&&!me){setNear("denied");renderNear()}
+    };
+  }).catch(function(){});
+}
+document.addEventListener("visibilitychange",function(){if(!document.hidden&&!me)askLocation()});
+var rzT;window.addEventListener("resize",function(){clearTimeout(rzT);rzT=setTimeout(function(){if(!me)renderNear();else fitTitles()},150)});
+renderNear();
+
+/* nav buttons */
+function openOnly(id){closeAll();open(id)}
+var ms={only:true,t:"All",g:"",b:0,so:"low"};
+function messItems(){var g=ms.g,max=ms.b,so=ms.so,re=/mess|food|tiffin/i;
+ var pool=ms.only?messFood.slice():all().filter(function(l){return(l.am||[]).some(function(a){return re.test(a)})});
+ var items=pool.filter(function(l){
+  if(ms.t!=="All"&&l.type!==ms.t)return false;
+  if(g&&l.g!==g&&!(l.g==="Veg & Non-veg"&&(g==="Veg"||g==="Non-veg")))return false;
+  return !max||l.rent<=max}).map(function(l){return me&&geo[l.area]?Object.assign({},l,{_d:km(me,geo[l.area])}):l});
+ var dist=function(l){return typeof l._d==="number"?l._d:1e9};
+ items.sort(function(a,b){if(so==="high")return b.rent-a.rent;if(so==="near")return dist(a)-dist(b)||a.rent-b.rent;if(so==="ver")return(b.v?1:0)-(a.v?1:0)||a.rent-b.rent;return a.rent-b.rent});
+ return items}
+(function(){
+ var G=[],cur=null;
+ function chips(id,opts,get,set,cls){var w=$(id);opts.forEach(function(o){var b=el("button",cls,o[1]);b.type="button";b.dataset.v=String(o[0]);b.onclick=function(){set(o[0]);paint();messRender()};w.appendChild(b)});w._get=get;G.push(id)}
+ chips("msgShow",[[true,"Mess only"],[false,"Food with stay"]],function(){return ms.only},function(v){if(ms.only!==v){ms.t="All";ms.g=""}ms.only=v},"");
+ chips("msgType",[["All","All"],["Cloud kitchen","Cloud kitchen"],["Home mess","Home mess"],["Tiffin","Tiffin"],["Mess hall","Mess hall"],["Room","Room"],["PG","PG"],["Hostel","Hostel"]],function(){return ms.t},function(v){ms.t=v},"glass gbtn");
+ chips("msgWho",[["","Anyone"],["Veg","Veg"],["Non-veg","Non-veg"],["Men","Men"],["Women","Women"],["Family","Family"]],function(){return ms.g},function(v){ms.g=v},"glass gbtn");
+ var BP=[0,3000,4000,6000,8000,12000],cusOpen=false;
+ chips("msgBud",[[0,"Any"],[3000,"Up to ₹3,000"],[4000,"Up to ₹4,000"],[6000,"Up to ₹6,000"],[8000,"Up to ₹8,000"],[12000,"Up to ₹12,000"]],function(){return ms.b},function(v){ms.b=v},"glass gbtn");
+ var cusBtn=el("button","glass gbtn","Custom");cusBtn.type="button";cusBtn.dataset.v="custom";$("msgBud").appendChild(cusBtn);
+ cusBtn.onclick=function(){cusOpen=!cusOpen;paint();if(cusOpen)$("msCusIn").focus()};
+ $("msgBud").addEventListener("click",function(e){var b=e.target.closest("button");if(b&&b.dataset.v!=="custom"){cusOpen=false;$("msCusIn").value="";paint()}});
+ function setCus(){var v=Math.round(Number($("msCusIn").value));if(!(v>0))return $("msCusIn").focus();ms.b=Math.min(v,1000000);cusOpen=true;paint();messRender()}
+ $("msCusOk").onclick=setCus;
+ $("msCusIn").addEventListener("keydown",function(e){if(e.key==="Enter"){e.preventDefault();setCus()}});
+ var SO=[["low","Rent: low to high","Cheapest rent first","i-ms-lo"],["high","Rent: high to low","Highest rent first","i-ms-hi"],["near","Nearest first","Closest to your location","i-ms-near"],["ver","Verified first","Trusted listings on top","i-ms-ver"]];
+ (function(){var w=$("msgSort");SO.forEach(function(o){var b=el("button","msopt");b.type="button";b.dataset.v=o[0];
+  var oi=el("span","oi");oi.appendChild(icon(o[3]));b.appendChild(oi);
+  var t=el("span");t.appendChild(el("strong",null,o[1]));t.appendChild(el("small",null,o[2]));b.appendChild(t);
+  b.appendChild(el("span","rd"));
+  b.onclick=function(){ms.so=o[0];paint();messRender();setTimeout(closeSheet,170)};w.appendChild(b)});
+  w._get=function(){return ms.so};G.push("msgSort")})();
+ function labels(){var a=[];if(!ms.only)a.push(["only","Food with stay"]);if(ms.t!=="All")a.push(["t",ms.t]);if(ms.g)a.push(["g",ms.g]);if(ms.b)a.push(["b","Up to ₹"+ms.b.toLocaleString("en-IN")]);return a}
+ function paint(){G.forEach(function(id){var w=$(id);Array.prototype.forEach.call(w.children,function(b){b.setAttribute("aria-pressed",b.dataset.v===String(w._get()))})});
+  var FT=["Cloud kitchen","Home mess","Tiffin","Mess hall","Veg","Non-veg"],ST=["Room","PG","Hostel","Men","Women","Family"];
+  ["msgType","msgWho"].forEach(function(id){Array.prototype.forEach.call($(id).children,function(b){var v=b.dataset.v;b.style.display=(ms.only?ST:FT).indexOf(v)>-1?"none":""})});
+  $("msgWhoH").textContent=ms.only?"Food type":"Who can stay";$("msgBudH").textContent=ms.only?"Monthly plan budget":"Budget per month";
+  var isCus=ms.b>0&&BP.indexOf(ms.b)<0;
+  cusBtn.setAttribute("aria-pressed",isCus||cusOpen?"true":"false");cusBtn.textContent=isCus?"Custom · ₹"+ms.b.toLocaleString("en-IN"):"Custom";
+  $("msCus").hidden=!(isCus||cusOpen);if(isCus&&document.activeElement!==$("msCusIn"))$("msCusIn").value=ms.b;
+  var a=labels(),fb=$("msFb"),sb=$("msSb");
+  fb.classList.toggle("act",!!a.length);if(a.length)fb.dataset.n=a.length;else delete fb.dataset.n;
+  sb.classList.toggle("act",ms.so!=="low");if(ms.so!=="low")sb.dataset.dot="1";else delete sb.dataset.dot;
+  var bar=$("msAct");bar.textContent="";bar.hidden=!a.length;
+  a.forEach(function(x){var b=el("button",null,x[1]);b.type="button";b.setAttribute("aria-label","Remove filter "+x[1]);b.appendChild(icon("i-x"));
+   b.onclick=function(){if(x[0]==="only"){ms.only=true;ms.t="All";ms.g=""}else if(x[0]==="t")ms.t="All";else if(x[0]==="g")ms.g="";else{ms.b=0;cusOpen=false;$("msCusIn").value=""}paint();messRender()};bar.appendChild(b)});
+  $("msReset").disabled=!a.length;
+  var n=messItems().length;$("msApply").textContent=n?"Show "+n+(n===1?" place":" places"):"No places found";if(cur)fit()}
+ function fit(){var pop=$("p-mess").querySelector(".pop.ms");if(!cur){pop.style.minHeight="";return}var sh=$(cur==="f"?"msFp":"msSp");pop.style.minHeight=Math.ceil(parseFloat(getComputedStyle(sh).top)+sh.offsetHeight+16)+"px"}
+ window.addEventListener("resize",function(){if(cur)fit()});
+ function setSheet(name){[["f","msFp","msFb"],["s","msSp","msSb"]].forEach(function(k){var on=k[0]===name,p=$(k[1]);p.classList.toggle("on",on);p.setAttribute("aria-hidden",on?"false":"true");p.inert=!on;$(k[2]).setAttribute("aria-expanded",on?"true":"false")});$("msSc").classList.toggle("on",!!name);fit()}
+ function openSheet(name){if(cur){cur=name;setSheet(name);return}cur=name;setSheet(name);stack.push("mssheet");history.pushState({p:"mssheet"},"")}
+ function closeSheet(){if(cur)history.back()}
+ window.msCloseSheet=function(){cur=null;setSheet(null)};
+ $("msFb").onclick=function(){cur==="f"?closeSheet():openSheet("f")};
+ $("msSb").onclick=function(){cur==="s"?closeSheet():openSheet("s")};
+ $("msFb").setAttribute("aria-controls","msFp");$("msSb").setAttribute("aria-controls","msSp");
+ $("msSc").onclick=$("msApply").onclick=closeSheet;
+ Array.prototype.forEach.call(document.querySelectorAll("[data-msx]"),function(b){b.onclick=closeSheet});
+ $("msReset").onclick=function(){ms.only=true;ms.t="All";ms.g="";ms.b=0;cusOpen=false;$("msCusIn").value="";paint();messRender()};
+ paint();window.messPaint=paint})();
+function messCard(l){var c=el("button","msc");c.type="button";
+ var ic=el("span","msi");ic.appendChild(icon("i-s-food"));c.appendChild(ic);
+ var n=el("span","msn");n.appendChild(document.createTextNode(l.t));if(l.v)n.appendChild(badge());c.appendChild(n);
+ var p=el("span","msp",fmt(l.rent));p.appendChild(el("small",null,l.kind==="food"?"monthly plan":"per month"));c.appendChild(p);
+ c.appendChild(el("span","msw",l.where+(typeof l._d==="number"?" · "+l._d.toFixed(1)+" km away":"")));
+ var g=el("span","msg");g.appendChild(el("span",null,l.type+" · "+l.g));
+ if(l.kind==="food")g.appendChild(el("span","on",fmt(l.meal)+" per meal"));
+ (l.am||[]).slice(0,4).forEach(function(a){var t=el("span",/mess|food|tiffin/i.test(a)?"on":null,a);g.appendChild(t)});c.appendChild(g);
+ c.setAttribute("aria-label",l.t+", "+fmt(l.rent)+(l.kind==="food"?" monthly plan":" per month")+". Open details");c.onclick=function(){messDetail(l)};return c}
+function messRender(){var box=$("messList"),items=messItems();
+ box.textContent="";items.forEach(function(l){box.appendChild(messCard(l))});box.scrollTop=0;
+ $("messCount").textContent=items.length+(items.length===1?" place":" places")+(ms.only?" · mess only":" · food with stay");
+ if(!items.length)box.appendChild(el("p","mse","Nothing matches. Try another filter or a higher budget."))}
+function messOpen(){ms.only=true;msCloseSheet();messRender();window.messPaint();openOnly("mess")}
+window.koodu={open:openOnly,mess:messOpen};
+$("messBtn").onclick=messOpen;
+$("nSearch").onclick=$("bSearch").onclick=function(){openOnly("search");$("sq").focus()};
+$("nSaved").onclick=$("bSaved").onclick=function(){openOnly("saved")};
+$("nAdd").onclick=$("bAdd").onclick=function(){openOnly("add")};
+$("nUser").onclick=$("bUser").onclick=function(){openOnly("signup")};
+$("nMap").onclick=$("bMap").onclick=function(){openOnly("map")};
+areas.forEach(function(a){var l=el("a","glass gbtn g",a[0]);l.href="https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("PG hostel rooms for rent in "+a[0]+", Ernakulam");l.target="_blank";l.rel="noopener";$("mapLinks").appendChild(l)});
+$("signForm").addEventListener("submit",function(e){e.preventDefault();var f=new FormData(this);store("koodu.profile.v1",{name:String(f.get("name")).trim(),phone:String(f.get("phone")).trim(),role:f.get("role")});this.reset();closeAll();toast("Account created")});
+$("bHome").onclick=function(){closeAll();window.scrollTo({top:0})};
+render();
+askLocation();
+})();
+</script>
+<script>
+(async function(){
+  if(typeof claude==="undefined"||!claude.use)return;
+  var db=null,assets=null,ref=null,ids={};
+  try{db=await claude.use("db")}catch(e){}
+  try{assets=await claude.use("assets")}catch(e){}
+  var ok=function(v){return typeof v==="string"&&/^[0-9a-f]{32}$/.test(v)};
+  function paint(){
+    ["s1","s2","s3"].forEach(function(k){
+      document.querySelectorAll(".slide."+k).forEach(function(sl){
+        var old=sl.querySelector(".photo-bg");if(old)old.remove();
+        if(ok(ids[k])){var d=document.createElement("div");d.className="photo-bg";d.style.backgroundImage='url("/_blob/'+ids[k]+'")';sl.insertBefore(d,sl.firstChild);sl.classList.add("hasphoto")}
+        else sl.classList.remove("hasphoto");
+      });
+    });
+  }
+  if(db){try{ref=db.doc("site/hero");var snap=await ref.get();if(snap.exists){var d=snap.data()||{};["s1","s2","s3"].forEach(function(k){if(ok(d[k]))ids[k]=d[k]})}paint()}catch(e){ref=null}}
+  if(!(assets&&ref))return;
+  var rows=document.getElementById("heroRows"),labels={s1:"Slide 1: Rooms in Ernakulam",s2:"Slide 2: PGs",s3:"Slide 3: Hostels"};
+  ["s1","s2","s3"].forEach(function(k){
+    var r=document.createElement("div");r.className="hrow";
+    var t=document.createElement("b");t.textContent=labels[k];
+    var f=document.createElement("input");f.type="file";f.accept="image/*";f.setAttribute("aria-label","Photo for "+labels[k]);
+    var st=document.createElement("span");st.className="muted";st.textContent=ids[k]?"Photo added":"Using the drawing";
+    var rm=document.createElement("button");rm.type="button";rm.className="btn";rm.textContent="Remove photo";rm.style.minHeight="44px";
+    f.onchange=async function(){
+      var file=f.files&&f.files[0];if(!file)return;
+      if(!/^image\//.test(file.type)){st.textContent="Choose an image file";return}
+      if(file.size>8*1024*1024){st.textContent="Photo is over 8 MB. Choose a smaller one.";return}
+      st.textContent="Uploading…";
+      try{var res=await assets.upload(file);ids[k]=res.id;await ref.set(ids);paint();st.textContent="Photo added"}
+      catch(e){st.textContent="Could not upload ("+((e&&e.code)||"error")+")"}
+    };
+    rm.onclick=async function(){
+      try{delete ids[k];await ref.set(ids);paint();st.textContent="Using the drawing";f.value=""}
+      catch(e){st.textContent="Could not remove ("+((e&&e.code)||"error")+")"}
+    };
+    r.appendChild(t);r.appendChild(f);r.appendChild(st);r.appendChild(rm);rows.appendChild(r);
+  });
+  var b=document.createElement("button");b.type="button";b.className="glass w hbtn";b.textContent="Change hero photos";
+  b.onclick=function(){if(window.koodu)window.koodu.open("hero")};
+  document.querySelector(".hero").appendChild(b);
+})();
+</script>
+<script>
+Array.prototype.forEach.call(document.querySelectorAll("[data-pop]"),function(b){b.onclick=function(){if(window.koodu)window.koodu.open(b.getAttribute("data-pop"))}});
+(function(){var c=document.getElementById("svTrack"),x=document.getElementById("svW"),tm,done=0;if(!c||!x)return;
+function u(){var m=c.scrollWidth-c.clientWidth;x.classList.toggle("hl",c.scrollLeft>4);x.classList.toggle("hr",c.scrollLeft<m-4)}
+function wake(){if(done)return;x.classList.add("sa");clearTimeout(tm);tm=setTimeout(function(){x.classList.remove("sa");setTimeout(function(){done=1;x.classList.add("gone")},300)},5000)}
+c.addEventListener("scroll",u,{passive:true});window.addEventListener("resize",u);window.addEventListener("load",function(){u();wake()});u();wake();
+document.getElementById("svP").onclick=function(){c.scrollBy({left:-Math.round(c.clientWidth*.7),behavior:"smooth"})};
+document.getElementById("svN").onclick=function(){c.scrollBy({left:Math.round(c.clientWidth*.7),behavior:"smooth"})}})();
+</script>
+</body>
+</html>
